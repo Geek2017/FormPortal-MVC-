@@ -177,7 +177,36 @@ angular.module('loginApp').controller('loginCtrl', function ($scope){
         }  
       });
 
-     
+     $scope.loginsubmit=function(){
+
+       
+    
+      if( $('#loginEmail').val() != '' && $('#loginPassword').val() != '' ){
+        //login the user
+        var data = {
+          email: $('#loginEmail').val(),
+          password: $('#loginPassword').val()
+        };
+        firebase.auth().signInWithEmailAndPassword(data.email, data.password)
+          .then(function(authData) {
+            auth = authData;
+           if(authData.emailVerified){
+            window.location.replace("../index.html");
+            console.log(authData);
+           }else{
+             alert('email not verified, please check your email for confirmation');
+           }
+           
+         
+          })
+          .catch(function(error) {
+            console.log("Login Failed!", error.message);
+            alert(error.message+' Check your input');
+         
+          });
+      }
+
+     }
       
 
       $('#loginForm').on('submit', function (e) {
