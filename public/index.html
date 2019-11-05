@@ -18,7 +18,7 @@
   <!-- END META SECTION -->
   <script src="assets/libraries/AngularJS/angular.js"></script>
   <script src="assets/libraries/AngularJS/angular-route.js"></script>
-  <script type="text/javascript" src="./assets/js/plugins/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/js/plugins/jquery/jquery.min.js"></script>
   <script type="text/javascript" src="assets/js/controller/ccftheme.js"></script>
   <!-- CSS INCLUDE -->
 
@@ -226,8 +226,8 @@
           <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
         </div>
         <div class="mb-footer">
-          <div class="pull-right">
-            <a href="" id="logout" class="btn btn-success btn-lg">Yes</a>
+          <div class="pull-right" ng-controller="indexdCtrl">
+            <a href="#" ng-click="logout();" class="btn btn-success btn-lg">Yes</a>
             <button class="btn btn-default btn-lg mb-control-close">No</button>
           </div>
         </div>
@@ -276,7 +276,9 @@
   <script type="text/javascript" src="assets/js/actions.js"></script>
  
   <script src="app.js"></script>
-  <script src="controllers/home.js"></script>
+  <script src="index.js"></script>
+  <!--Form Page Controller -->
+  <script src="controllers/dashboardCtrl.js"></script>
   
 </body>
 

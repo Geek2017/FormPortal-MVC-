@@ -210,7 +210,7 @@ $(document).ready(function () {
         e.preventDefault();
         firebase.auth().signOut().then(() => {
           console.log('Out')
-          window.location.replace("./index.html");
+          window.location.replace("../../index.html");
         });
       });  
 

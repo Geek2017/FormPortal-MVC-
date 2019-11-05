@@ -4,7 +4,7 @@ $(document).ready(function(){
   $('#container').css('visibility', 'hidden');
  
 
-  // localStorage.setItem('theme','./assets/css/theme-default.css') 
+  localStorage.setItem('theme','./assets/css/theme-default.css') 
 
 
 
