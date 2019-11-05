@@ -17,9 +17,9 @@
     <!-- EOF CSS INCLUDE -->
 </head>
 
-<body>
+<body ng-app="loginApp">
 
-    <div class="login-container">
+    <div class="login-container" ng-controller="loginCtrl">
         <form action="#" role="form" class="form-horizontal" id="loginForm">
             <div class="login-box animated fadeInDown">
                 <div class="login-logo"></div>
@@ -70,9 +70,12 @@
         </form>
     </div>
     <script type="text/javascript" src="../assets/js/plugins/jquery/jquery.min.js"></script>
-    <!-- <script src="./public/"></script> -->
+    <script src="../assets/libraries/AngularJS/angular.js"></script>
+    <script src="../assets/libraries/AngularJS/angular-route.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-    <!-- <script src="./js/auth.js"> </script>      -->
+    <script src="login.js"> </script>
+    <script src="../controllers/loginCtrl.js"> </script>        
+   
 </body>
 
 </html>

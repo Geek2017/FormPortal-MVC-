@@ -7,7 +7,7 @@ angular.module('newApp').controller('indexdCtrl', function ($scope)
 
     firebase.auth().signOut().then(() => {
       console.log('Out')
-      window.location.replace("views/");
+      window.location.replace("views/login.html");
     });
   }
 });

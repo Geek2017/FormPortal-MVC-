@@ -10,7 +10,6 @@ angular
         templateUrl : 'views/dashboard.html',
         controller: 'dashboardCtrl'
       })
-     
       .when('/addnumber', {
         templateUrl : 'views/addnumber.html'
       })
