@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('loginApp').controller('loginCtrl', function ($scope){
+angular.module('loginApp').controller('loginCtrl', function ($scope,$http){
 
     //initialize the firebase app
       var config = {
@@ -176,17 +176,14 @@ angular.module('loginApp').controller('loginCtrl', function ($scope){
           }
         }  
       });
+      
+     $scope.loginsubmit=function(event){
 
-     $scope.loginsubmit=function(){
-
-       
-    
-      if( $('#loginEmail').val() != '' && $('#loginPassword').val() != '' ){
-        //login the user
         var data = {
-          email: $('#loginEmail').val(),
-          password: $('#loginPassword').val()
+          email: $scope.loginEmail,
+          password: $scope.loginPassword
         };
+
         firebase.auth().signInWithEmailAndPassword(data.email, data.password)
           .then(function(authData) {
             auth = authData;
@@ -204,8 +201,7 @@ angular.module('loginApp').controller('loginCtrl', function ($scope){
             alert(error.message+' Check your input');
          
           });
-      }
-
+          event.preventDefault();
      }
       
 

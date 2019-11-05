@@ -7,8 +7,12 @@ angular
     $routeProvider
      
       .when('/', {
-        templateUrl : 'views/login.html',
+        templateUrl : 'login.html',
         controller: 'loginCtrl'
+      })
+      .when('/wizard', {
+        templateUrl : 'wizard.html',
+        controller: 'wizardCtrl'
       })
      
   });
