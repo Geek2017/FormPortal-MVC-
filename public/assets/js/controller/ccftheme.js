@@ -43,6 +43,7 @@ setTimeout(function(){
     $("#default").click(function(){
      localStorage.setItem('theme','assets/css/theme-default.css')
      $("#theme").prop("href", 'assets/css/theme-default.css');
+     window
     });
     
     $("#brown").click(function(){
