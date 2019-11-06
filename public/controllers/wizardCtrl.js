@@ -3,7 +3,7 @@
 // Controller for View1
 angular.module('loginApp').controller('wizardCtrl', function ($scope)
 {
-    alert('123')
+  
    $scope.execute= function() {
         var dbRef = firebase.database().ref().child('cus_data');
         dbRef.on('value', snapshot => {

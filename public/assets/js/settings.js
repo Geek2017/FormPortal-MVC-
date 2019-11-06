@@ -16,8 +16,8 @@ $(document).ready(function(){
     
     $(".theme-set input").on("ifClicked",function(){
         
-        var input   = $(this);
-
+        var input   =  $(this);
+        
         if(input.attr("name") != 'st_layout_boxed'){
                 
             if(!input.prop("checked")){
@@ -71,7 +71,12 @@ $(document).ready(function(){
     $(".ts-themes a").click(function(){
         $(".ts-themes a").removeClass("active");
         $(this).addClass("active");
-        $("#theme").attr("href",$(this).data("theme"));
+
+        var newurl= $(this).data("theme");
+        var reurl='assets/'+newurl;   
+
+        $("#theme").attr("href",reurl);
+       alert(reurl);
         return false;
     });
     /* END Change Theme */

@@ -3,6 +3,8 @@
 
 angular.module('newApp').controller('indexdCtrl', function ($scope)
 {
+  
+ 
   $scope.logout=function(){
 
     firebase.auth().signOut().then(() => {

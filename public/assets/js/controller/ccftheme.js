@@ -1,16 +1,14 @@
 $(document).ready(function(){
 
  
-  $('#container').css('visibility', 'hidden');
- 
+  
 
-  localStorage.setItem('theme','../assets/css/theme-default.css') 
-
+  $("#theme").prop("href", localStorage.getItem('theme'));
 
 
 
 if(localStorage.getItem('theme')==null){
-  localStorage.setItem('theme','../assets/css/theme-default.css') 
+  localStorage.setItem('theme','assets/css/theme-default.css') 
 }else{
   $("#theme").prop("href", localStorage.getItem('theme'));
   
@@ -43,23 +41,24 @@ setTimeout(function(){
     //theme color
 
     $("#default").click(function(){
-     localStorage.setItem('theme','css/theme-default.css')
+     localStorage.setItem('theme','assets/css/theme-default.css')
+     $("#theme").prop("href", 'assets/css/theme-default.css');
     });
     
     $("#brown").click(function(){
-      localStorage.setItem('theme','css/theme-brown.css')
+      localStorage.setItem('theme','assets/css/theme-brown.css')
     });
 
     $("#blue").click(function(){
-      localStorage.setItem('theme','css/theme-blue.css')
+      localStorage.setItem('theme','assets/css/theme-blue.css')
     });
     
     $("#white").click(function(){
-      localStorage.setItem('theme','css/theme-white.css')
+      localStorage.setItem('theme','assets/css/theme-white.css')
     });
 
     $("#black").click(function(){
-      localStorage.setItem('theme','css/theme-black.css')
+      localStorage.setItem('theme','assets/css/theme-black.css')
     });
 
     //form color
