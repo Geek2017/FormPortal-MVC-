@@ -4,13 +4,13 @@ $(document).ready(function(){
   $('#container').css('visibility', 'hidden');
  
 
-  localStorage.setItem('theme','./assets/css/theme-default.css') 
+  localStorage.setItem('theme','../assets/css/theme-default.css') 
 
 
 
 
 if(localStorage.getItem('theme')==null){
-  localStorage.setItem('theme','./assets/css/theme-default.css') 
+  localStorage.setItem('theme','../assets/css/theme-default.css') 
 }else{
   $("#theme").prop("href", localStorage.getItem('theme'));
   
