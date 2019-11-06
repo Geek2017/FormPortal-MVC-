@@ -6,8 +6,6 @@ $(document).ready(function () {
       var str = window.location.pathname; 
       var res = str.slice(0, 5);
 
-
-
       var config = {
         apiKey: "AIzaSyArkU60LENXmQPHRvWoK26YagzprezV3dg",
         authDomain: "cmlformportal-b8674.firebaseapp.com",
@@ -227,7 +225,7 @@ $(document).ready(function () {
             .then(function(authData) {
               auth = authData;
              if(authData.emailVerified){
-              window.location.replace("./main.html");
+              window.location.replace("index.html");
               console.log(authData);
              }else{
                alert('email not verified, please check your email for confirmation');

@@ -76,7 +76,7 @@ $(document).ready(function(){
         var reurl='assets/'+newurl;   
 
         $("#theme").attr("href",reurl);
-       alert(reurl);
+    //    alert(reurl);
         return false;
     });
     /* END Change Theme */

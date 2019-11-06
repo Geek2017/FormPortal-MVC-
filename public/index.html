@@ -25,7 +25,7 @@
   <!-- EOF CSS INCLUDE -->
 </head>
 
-<body ng-app="newApp">
+<body ng-app="newApp" ng-controller="indexdCtrl">
   <div id="container" class="page-container" style="visibility: hidden;">
 
     <!-- START PAGE SIDEBAR -->
@@ -226,7 +226,7 @@
           <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
         </div>
         <div class="mb-footer">
-          <div class="pull-right" ng-controller="indexdCtrl">
+          <div class="pull-right" >
             <a href="#" ng-click="logout();" class="btn btn-success btn-lg">Yes</a>
             <button class="btn btn-default btn-lg mb-control-close">No</button>
           </div>
@@ -249,7 +249,7 @@
 
 
   <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
-  <script src="assets/js/controller/script.js"></script>
+  <!-- <script src="assets/js/controller/script.js"></script> -->
   <!-- <script src="assets/js/controller/auth.js"></script> -->
   <!-- START THIS PAGE PLUGINS-->
   <script type='text/javascript' src='assets/js/plugins/icheck/icheck.min.js'></script>
