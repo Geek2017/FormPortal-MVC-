@@ -11,7 +11,8 @@ angular
         controller: 'dashboardCtrl'
       })
       .when('/addnumber', {
-        templateUrl : 'views/addnumber.html'
+        templateUrl : 'views/addnumber.html',
+        controller:'addnumberdCtrl'
       })
       .when('/salesproposal', {
         templateUrl : 'views/salesproposal.html',

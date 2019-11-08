@@ -4,7 +4,7 @@
         <form class="form-horizontal">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><img id="logoimg" class="img-responsive" width="100%" src="./img/no_bg-dark-horizontal-1.png" alt="log"></h3>
+                    <h3 class="panel-title"><img id="logoimg" class="img-responsive" width="50%" alt="log"></h3>
                     <ul class="panel-controls">
                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                     </ul>
@@ -68,7 +68,7 @@
                             <h5><strong> Phone Number to Transfer</strong></h5>
                             <p>Enter the phone number you wish to transfer and click "Check Now".</p>
                             <p>
-                                <input type="text"> <input type="text"> <input type="text"> <button
+                                <input type="text" ng-model="addno1" > <input type="text" ng-model="addno2" > <input type="text" ng-model="addno3" > <button
                                     type="button" class="btn btn-rounded btn-xs btn-success">Check
                                     Now</button>
                                 <p><label>
@@ -106,7 +106,7 @@
                             <div class="form-group has-warning">
                                 <label class="control-label">Customer's Business or Personal
                                     Name:</label>
-                                <input type="text" class="form-control">(Exactly as it appears on your
+                                <input type="text" class="form-control" ng-model="cusbizname">(Exactly as it appears on your
                                 bill.)
                             </div>
 
@@ -154,15 +154,15 @@
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon">Address</span>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" ng-model="serviceadd">
                         </div><br>
                         <div class="input-group">
                             <span class="input-group-addon">Address 2</span>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" ng-model="serviceadd2">
                         </div><br>
                         <div class="input-group">
                             <span class="input-group-addon">City</span>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" ng-model="servicecity">
                         </div><br>
                         <div class="input-group">
                             <span class="input-group-addon">State</span>
@@ -202,7 +202,7 @@
                         </div><br>
                         <div class="input-group">
                             <span class="input-group-addon">Zip</span>
-                            <input type="text" class="form-control" placeholder="">
+                            <input type="text" class="form-control" placeholder="" ng-model="servicezip">
                         </div>
                         <P>Please Note: The service address is where the service for the number to
                             transfer is currently being
@@ -217,13 +217,13 @@
                             <div class="input-group">
                                 <span class="input-group-addon">Your Name:
                                 </span>
-                                <input type="text" class="form-control" placeholder="">
+                                <input type="text" class="form-control" placeholder="" ng-model="authorname">
                             </div><br>
                             <div class="input-group">
                                 <span class="input-group-addon">Your Telephone Number:
                                 </span>
-                                (<input type="text" placeholder="">) <input type="text"
-                                    placeholder="">-<input type="text" placeholder="">
+                                (<input type="text" placeholder="" ng-model="yourtel1">) <input type="text"
+                                    placeholder="" ng-model="yourtel2">-<input type="text" placeholder="" ng-model="yourtel3">
                             </div>
                             <br>
                             <div class="radio">
@@ -288,7 +288,7 @@
 
                 <div class="panel-footer">
                     <button class="btn btn-default">Clear Form</button>
-                    <button class="btn btn-primary pull-right">Submit</button>
+                    <button class="btn btn-primary pull-right" ng-click="saveaddnumber();">Submit</button>
                 </div>
         </form>
 
