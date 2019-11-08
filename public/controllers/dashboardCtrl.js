@@ -7,4 +7,5 @@ angular.module('newApp').controller('dashboardCtrl', function ($scope)
   $scope.fireatme=function(){
     alert(1);
   }
+  alert(1);
 });

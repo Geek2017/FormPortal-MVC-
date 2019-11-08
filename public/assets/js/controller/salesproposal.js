@@ -32,7 +32,7 @@ $(document).ready(function () {
         });
       
         
-        $("#mrcadd").on("click", function(e) {
+        $scope.nrcadd=function(){
             e.preventDefault()
             var $tableBody = $('#mcrrowTable').find("tbody"),
               $trLast = $tableBody.find("tr:first"),
@@ -40,7 +40,7 @@ $(document).ready(function () {
           
             $trLast.after($trNew);
            
-          });
+          }
       
           $('#mrcmin').on('click', function(e) {
             e.preventDefault()

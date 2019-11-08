@@ -14,7 +14,8 @@ angular
         templateUrl : 'views/addnumber.html'
       })
       .when('/salesproposal', {
-        templateUrl : 'views/salesproposal.html'
+        templateUrl : 'views/salesproposal.html',
+        controller:'salesproposalCtrl'
       })
       .when('/tollfreeport', {
         templateUrl : 'views/tollfreeport.html'
