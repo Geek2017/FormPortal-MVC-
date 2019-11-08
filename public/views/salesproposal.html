@@ -5,7 +5,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading ">
                     <h3 class="panel-title"><img id="logoimg" class="img-responsive pull-left"
-                            width="50%" src="./img/no_bg-dark-horizontal-1.png" alt="log"></h3>
+                            width="50%" src="" alt="log"></h3>
                     <ul class="panel-controls">
                         <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
                     </ul>
@@ -191,7 +191,7 @@
                             <h3 class="panel-title">Monthly Recurring Charges</h3>
                             <div class="btn-group pull-right ">
                                 <button class="btn btn-success btn-lg" ng-click="mrcadd();" >+</button>
-                                <button class="btn btn-danger btn-lg"  id="mrcmin" >-</button>
+                                <button class="btn btn-danger btn-lg"  ng-click="mrcmin();" >-</button>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -209,7 +209,7 @@
                                 <tbody>
                                     <tr >
                                         <td><input type="number" ng-model="mrcunit" class="form-control"
-                                                placeholder="0" ng-change="mcrtotalprice=mrcunit*mrcunitprice"></td>
+                                                placeholder="0"></td>
                                         <td>
                                                 <select class="btn btn block btn-default">
                                                         <option ng-repeat="mrcitem in mcritems">{{mrcitem.items}}</option>
@@ -241,8 +241,8 @@
                         <div class="panel-heading panel panel-warning">
                             <h3 class="panel-title">Non-Recurring Charges (NRC)</h3>
                             <div class="btn-group pull-right ">
-                                <button class="btn btn-success btn-lg" id="nrcadd" >+</button>
-                                <button class="btn btn-danger btn-lg" id="nrcmin" >-</button>
+                                <button class="btn btn-success btn-lg" ng-click="nrcadd()" >+</button>
+                                <button class="btn btn-danger btn-lg" ng-click="nrcmin()" >-</button>
                             </div>
                         </div>
                         <div class="panel-body">
@@ -264,22 +264,11 @@
                                     <tr>
                                         <td><input type="number" id="" class="form-control"
                                                 placeholder="0"></td>
-                                        <td><select name="cars" class="btn btn block">
-                                                <option value="volvo">Aastra/Mitel 6863i Basic | MSRP
-                                                    $100.00</option>
-                                                <option value="saab">Aastra/Mitel 6867i Advanced Phone |
-                                                    MSRP $230.00</option>
-                                                <option value="fiat">Aastra/Mitel 6869i Executive Phone
-                                                    | MSRP $300.00</option>
-                                                <option value="audi">Aastra/Mitel 6873i Advanced Touch
-                                                    Screen Executive Phone | MSRP $425.00 </option>
-                                                <option value="audi">Aastra/Mitel M680i Expansion Module
-                                                    | MSRP $80.00</option>
-                                                <option value="audi">Aastra/Mitel M685i Expansion Module
-                                                    | MSRP $200.00</option>
-                                                <option value="audi">Aastra/Mitel MiVoice Conference
-                                                    Phone | MSRP $1,195.00</option>
-                                            </select></td>
+                                        <td>
+                                            <select class="btn btn block btn-default">
+                                                <option ng-repeat="nrcitem in ncritems">{{nrcitem.items}}</option>
+                                        </select>
+                                        </td>
                                         <td><input type="number" id="" class="form-control"
                                                 placeholder="$ 0.00"></td>
                                         <td><input type="number" id="" class="form-control"
@@ -313,8 +302,8 @@
                                     <h3 class="panel-title">Free Program Feature Highlights
                                     </h3>
                                     <div class="btn-group pull-right ">
-                                        <button class="btn btn-success btn-lg" id="fpfhadd" >+</button>
-                                        <button class="btn btn-danger btn-lg" id="fpfhmin" >-</button>
+                                        <button class="btn btn-success btn-lg" ng-click="fpfhadd()" >+</button>
+                                        <button class="btn btn-danger btn-lg" ng-click="fpfhmin()" >-</button>
                                     </div>
                                 </div>
                                 <table class="table table-hover fpfrowTable" id="fpfrowTable">
@@ -331,22 +320,11 @@
                                         <tr>
                                             <td><input type="number" id="" class="form-control"
                                                     placeholder="0"></td>
-                                            <td><select name="cars" class="btn btn block">
-                                                    <option value="volvo">Auto attendant with
-                                                        unlimited extensions and dial by name
-                                                    </option>
-                                                    <option value="saab">Upload custom music-on-hold
-                                                    </option>
-                                                    <option value="fiat">Upload greetings </option>
-                                                    <option value="audi">Voicemail to email
-                                                    </option>
-                                                    <option value="audi">After hours and holiday
-                                                        routing</option>
-                                                    <option value="audi">Extension to extension
-                                                        dialing </option>
-                                                    <option value="audi">Callier ID and CallerId
-                                                        name </option>
-                                                </select></td>
+                                            <td>
+                                                    <select class="btn btn block btn-default">
+                                                            <option ng-repeat="fpfitem in fpfitems">{{fpfitem.items}}</option>
+                                                    </select>
+                                            </td>
                                             <td><input type="number" id="" class="form-control"
                                                     placeholder="$ 0.00"></td>
                                             <td><input type="number" id="" class="form-control"
