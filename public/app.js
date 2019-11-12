@@ -36,4 +36,8 @@ angular
       .when('/starcode', {
         templateUrl : 'views/starcode.html'
       })
+      .when('/usersprofile', {
+        templateUrl : 'views/usersprofile.html',
+        controller:'usersprofileCrtl'
+      })
   });

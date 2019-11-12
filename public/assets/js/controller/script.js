@@ -54,7 +54,7 @@ $(document).ready(function () {
               dbRef.on('value', calling => {
                 // console.log(calling.val());
                 $('#comname').val(calling.val().company);
-                $('#comcontact').val(calling.val().customerphone);
+                $('#comcontact').val(calling.val().mainphone);
                 $('#comaddress').val(calling.val().address1+' '+calling.val().state);
   
               });
@@ -89,9 +89,8 @@ $(document).ready(function () {
         e.preventDefault();
       
         var data = {
-          email: $('#cusemail').val(),
-          cusname: $('#cusname').val(),
-          cusid: $('#cusid').val(),
+          email: $('#cusemail').val()
+
         };
         var passwords = {
           password : $('#registerPassword').val(), //get the pass from Form
@@ -107,6 +106,13 @@ $(document).ready(function () {
             firebase.auth()
               .createUserWithEmailAndPassword(data.email, passwords.password)
               .then(function(user) {
+
+                if(user){
+                  user.updateProfile({
+                     displayName:$('#cusname').val(), 
+                     photoURL: ""
+                  })
+                }
               
                sendEmailVerification(data);
                save_cus_credencials();
@@ -201,7 +207,7 @@ $(document).ready(function () {
                 updates['/theme_info/' + uid] = data;
                 firebase.database().ref().update(updates);
    
-                refresh();
+                // refresh();
               }
 
               function refresh(){
@@ -238,7 +244,7 @@ $(document).ready(function () {
             .then(function(authData) {
               auth = authData;
              if(authData.emailVerified){
-              window.location.replace("index.html");
+              window.location.replace("./index.html");
               console.log(authData);
              }else{
                alert('email not verified, please check your email for confirmation');
@@ -253,14 +259,7 @@ $(document).ready(function () {
             });
         }
       });
-    
-      $('#logout').on('click', function(e) {
-        e.preventDefault();
-        firebase.auth().signOut().then(() => {
-          console.log('Out')
-          window.location.replace("../../index.html");
-        });
-      });  
+     
 
       $('#wizard').on('click', function(e) {
         window.location.replace("wizard.html")

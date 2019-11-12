@@ -19,33 +19,17 @@ angular.module('newApp').controller('indexdCtrl', function ($scope)
    
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-     
-      var databaseRef = firebase.database().ref('users/');
-      databaseRef.once('value', function (snapshot) {
-        snapshot.forEach(function (childSnapshot) {
-          var datas =childSnapshot.val();
-    
-            if(datas.cusemail===user.email){
-              console.log(datas.cusname);
-             localStorage.setItem('curusername',datas.cusname);
-            }  
-        })
-      });
-      
+       $('curusername').val(user.displayName);
+       console.log(user.displayName);
+       var d1 = document.getElementById('curusername');
+       d1.insertAdjacentHTML('beforeend', '<p>'+user.displayName+'</p>');
     } else {
       window.location.replace("login.html");
     }
   });
-
-
-  setTimeout(function () {
-    setinfo();
-  }, 3000);
-  function setinfo(){
-    alert('123')
-    $scope.curuser = localStorage.getItem('curusername');
-  }
   
+  
+
 
 
   $scope.logout=function(){
