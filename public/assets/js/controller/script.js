@@ -72,6 +72,19 @@ $(document).ready(function () {
       reader.readAsDataURL(file);
     });
 
+    $("#userimg").change(function(){
+      console.log("A Image has been selected.");
+      var file = document.querySelector('input[type=file]')['files'][0];
+      var reader = new FileReader();
+      var baseString;
+      reader.onloadend = function () {
+        baseString = reader.result;
+        console.log(baseString);
+        localStorage.setItem('userimgbase64',baseString)
+      };
+      reader.readAsDataURL(file);
+    });
+
       $('#wizard-validation').on('submit', function (e) {
         e.preventDefault();
       

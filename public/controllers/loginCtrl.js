@@ -28,7 +28,7 @@ angular.module('loginApp').controller('loginCtrl', function ($scope,$http){
       }
     });
 
-    $("#comlogo").change(function(){
+    $("#comlogo1").change(function(){
       console.log("A file has been selected.");
       var file = document.querySelector('input[type=file]')['files'][0];
       var reader = new FileReader();
@@ -38,8 +38,24 @@ angular.module('loginApp').controller('loginCtrl', function ($scope,$http){
         console.log(baseString);
         localStorage.setItem('base64',baseString)
       };
-      reader.readAsDataURL(file);
+      // reader.readAsDataURL(file);
     });
+
+    $("#comlogo").change(function(){
+      console.log("A image has been selected.");
+      var file = document.querySelector('input[type=file]')['files'][0];
+      var reader = new FileReader();
+      var baseString;
+      reader.onloadend = function () {
+        baseString = reader.result;
+        console.log(baseString);
+        localStorage.setItem('userimgB64',baseString)
+      };
+      // reader.readAsDataURL(file);
+    });
+
+
+
 
       $('#wizard-validation').on('submit', function (e) {
         e.preventDefault();
