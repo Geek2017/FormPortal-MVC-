@@ -14,25 +14,45 @@ angular.module('newApp').controller('indexdCtrl', function ($scope)
   //create firebase references
   var Auth = firebase.auth();
   var dbRef = firebase.database();
-  var usersRef = dbRef.ref('users')
-  var auth = null;
+ 
 
    
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      console.log(user.emailVerified)
-
-    } else {
-     console.log(user)
-      window.location.replace("login.html");
+     
+      var databaseRef = firebase.database().ref('users/');
+      databaseRef.once('value', function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+          var datas =childSnapshot.val();
+    
+            if(datas.cusemail===user.email){
+              console.log(datas.cusname);
+             localStorage.setItem('curusername',datas.cusname);
+            }  
+        })
+      });
       
+    } else {
+      window.location.replace("login.html");
     }
   });
- 
+
+
+  setTimeout(function () {
+    setinfo();
+  }, 3000);
+  function setinfo(){
+    alert('123')
+    $scope.curuser = localStorage.getItem('curusername');
+  }
+  
+
+
   $scope.logout=function(){
 
     firebase.auth().signOut().then(() => {
       console.log('Out')
+      localStorage.clear();
       window.location.replace("login.html");
     });
   }
