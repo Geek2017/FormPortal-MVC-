@@ -10,6 +10,10 @@ angular
         templateUrl : 'views/dashboard.html',
         controller: 'dashboardCtrl'
       })
+      .when('/createstaff', {
+        templateUrl : 'views/createstaff.html',
+        controller:'createstaffdCtrl'
+      })
       .when('/addnumber', {
         templateUrl : 'views/addnumber.html',
         controller:'addnumberdCtrl'

@@ -3,6 +3,14 @@
 
 angular.module('newApp').controller('indexdCtrl', function ($scope)
 {
+ 
+
+  setTimeout(function(){ 
+    document.getElementById("formportal").style.visibility = "visible";
+  }, 3000);
+
+    
+
   var config = {
     apiKey: "AIzaSyArkU60LENXmQPHRvWoK26YagzprezV3dg",
     authDomain: "cmlformportal-b8674.firebaseapp.com",
@@ -20,7 +28,10 @@ angular.module('newApp').controller('indexdCtrl', function ($scope)
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
        $('curusername').val(user.displayName);
-       console.log(user.displayName);
+       console.log(user);
+
+       localStorage.setItem('curusermail',user.email);
+
        var d1 = document.getElementById('curusername');
        d1.insertAdjacentHTML('beforeend', '<p>'+user.displayName+'</p>');
     } else {
