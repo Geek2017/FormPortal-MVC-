@@ -3,13 +3,7 @@
 
         <form class="form-horizontal">
             <div class="panel panel-default">
-                <div class="panel-heading ">
-                    <h3 class="panel-title"><img id="logoimg" class="img-responsive pull-left"
-                            width="50%" src="" alt="log"></h3>
-                    <ul class="panel-controls">
-                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
-                    </ul>
-                </div>
+                
                 <div id="wpblue" class="panel panel-warning">
                     <h1>Proposal Specifications</h1>
                 </div>
@@ -409,46 +403,12 @@
                         <button class="btn btn-danger">Clear Form</button>
                         <div class="btn-group pull-right ">
                             <button class="btn btn-info " >Print it</button>
-                            <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter">Mail it</button>
+                            <button class="btn btn-primary ">Mail it</button>
                             <button class="btn btn-success " id="sig-submitBtn">Save it</button>                                      
                         </div>
                     </div>
                     
         </form>
 
-
     </div>
 </div>
-
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-          <button type="button" class="btn btn-danger" data-dismiss="modal"  style="float: none!important;">X</button>
-        </div>
-        <div class="modal-body">
-        
-            <form class="" id="myform" onsubmit="emailjs.sendForm('default_service', 'template_Zi5Ei6W9', this); return false;" method="post">
-                <label>Email Recipient</label>
-                <input type="text" name="reply_to"  class="form-control"/>
-                <label>Sender Name</label>
-                <input type="text" name="from_name"class="form-control" />
-                <label>Recipient Name</label>
-                <input type="text" name="to_name" class="form-control"/>
-                <label>URL & Message</label>
-                <!-- <input type="text" name="message_html" class="form-control" height="100px"/> -->
-                <textarea  class="form-control" name="message_html" cols="10" rows="3"></textarea>
-                <br><br>
-                <button class="btn btn-success btn block" style="float: none!important;">
-                Send
-                </button>
-            </form>
-        </div>
-       
-      </div>
-    </div>
-  </div>
-
