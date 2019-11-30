@@ -1,12 +1,34 @@
 #sig-canvas {
-  border: 2px dotted #CCCCCC;
-  border-radius: 15px;
-  cursor: crosshair;
-
+    border: 2px dotted #CCCCCC;
+    border-radius: 15px;
+    cursor: crosshair;
 }
 
 canvas {
- 
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
+}
+
+#span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    color: white
+}
+
+#a {
+    color: #F00;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+
+#c {
+    display: block;
+}
+
+#b {
+    display: block;
+    float: right;
 }

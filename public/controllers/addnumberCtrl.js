@@ -33,11 +33,21 @@ angular.module('newApp').controller('addnumberdCtrl', function ($scope) {
 
     });
 
+
+
+
    $scope.saveaddnumber = function(){
-               
+
+
+    $('input').each(function() {
+        
+        if(!$(this).val()){
+            alert('Some fields are empty');
+           return false;
+        }else{
+
         var uid = firebase.database().ref().child('users').push().key;
        
-
         var data = {
          addnumber:     $scope.addno1+$scope.addno2+$scope.addno3,
          cusbizname:    $scope.cusbizname,
@@ -51,16 +61,15 @@ angular.module('newApp').controller('addnumberdCtrl', function ($scope) {
 
         var updates = {};
         updates['/addnumbers/' + uid] = data;
-        firebase.database().ref().update(updates,$scope.alertit());
+        firebase.database().ref().update(updates,alert('Data Saved!'));
         
+
       
-      }
-
-
-      $scope.alertit=function(){
-          alert('Data Saved!')
-      }
-
+    }
+        
+    });
+  
+} 
 
 
 

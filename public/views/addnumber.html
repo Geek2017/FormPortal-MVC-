@@ -1,6 +1,5 @@
 <div class="row">
     <div class="col-md-12">
-
         <form class="form-horizontal">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -68,7 +67,9 @@
                             <h5><strong> Phone Number to Transfer</strong></h5>
                             <p>Enter the phone number you wish to transfer and click "Check Now".</p>
                             <p>
-                                <input type="text" ng-model="addno1" > <input type="text" ng-model="addno2" > <input type="text" ng-model="addno3" > <button
+                                 <input type="text" ng-model="addno1" required>
+                                  <input type="text" ng-model="addno2" required> 
+                                 <input type="text" ng-model="addno3" required> <button
                                     type="button" class="btn btn-rounded btn-xs btn-success">Check
                                     Now</button>
                                 <p><label>
@@ -106,7 +107,7 @@
                             <div class="form-group has-warning">
                                 <label class="control-label">Customer's Business or Personal
                                     Name:</label>
-                                <input type="text" class="form-control" ng-model="cusbizname">(Exactly as it appears on your
+                                <input type="text" class="form-control" ng-model="cusbizname" required>(Exactly as it appears on your
                                 bill.)
                             </div>
 
@@ -154,15 +155,15 @@
                         </div>
                         <div class="input-group">
                             <span class="input-group-addon">Address</span>
-                            <input type="text" class="form-control" placeholder="" ng-model="serviceadd">
+                            <input type="text" class="form-control" placeholder="" ng-model="serviceadd" required>
                         </div><br>
                         <div class="input-group">
                             <span class="input-group-addon">Address 2</span>
-                            <input type="text" class="form-control" placeholder="" ng-model="serviceadd2">
+                            <input type="text" class="form-control" placeholder="" ng-model="serviceadd2" required>
                         </div><br>
                         <div class="input-group">
                             <span class="input-group-addon">City</span>
-                            <input type="text" class="form-control" placeholder="" ng-model="servicecity">
+                            <input type="text" class="form-control" placeholder="" ng-model="servicecity" required>
                         </div><br>
                         <div class="input-group">
                             <span class="input-group-addon">State</span>
@@ -181,7 +182,7 @@
                                                     class="glyphicon glyphicon-ok icon-ok check-mark"></i></a>
                                         </li>
                                         <li rel="1"><a tabindex="0" class="" style=""><span
-                                                    class="text">Option 2</span><i
+                                                    class="text" selected>Option 2</span><i
                                                     class="glyphicon glyphicon-ok icon-ok check-mark"></i></a>
                                         </li>
                                         <li rel="2"><a tabindex="0" class="" style=""><span
@@ -217,13 +218,13 @@
                             <div class="input-group">
                                 <span class="input-group-addon">Your Name:
                                 </span>
-                                <input type="text" class="form-control" placeholder="" ng-model="authorname">
+                                <input type="text" class="form-control" placeholder="" ng-model="authorname" required>
                             </div><br>
                             <div class="input-group">
                                 <span class="input-group-addon">Your Telephone Number:
                                 </span>
-                                (<input type="text" placeholder="" ng-model="yourtel1">) <input type="text"
-                                    placeholder="" ng-model="yourtel2">-<input type="text" placeholder="" ng-model="yourtel3">
+                                (<input type="text" placeholder="" ng-model="yourtel1" required>) <input type="text"
+                                    placeholder="" ng-model="yourtel2" required>-<input type="text" placeholder="" ng-model="yourtel3" required>
                             </div>
                             <br>
                             <div class="radio">
@@ -284,12 +285,13 @@
                         </div>
 
                     </div>
+                    <div class="panel-footer">
+                        <button class="btn btn-default">Clear Form</button>
+                        <button class="btn btn-primary pull-right" ng-click="saveaddnumber();">Submit</button>
+                    </div>
                 </div>
 
-                <div class="panel-footer">
-                    <button class="btn btn-default">Clear Form</button>
-                    <button class="btn btn-primary pull-right" ng-click="saveaddnumber();">Submit</button>
-                </div>
+               
         </form>
 
     </div>

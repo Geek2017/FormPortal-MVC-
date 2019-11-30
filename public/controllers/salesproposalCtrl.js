@@ -3,37 +3,37 @@
 
 angular.module('newApp').controller('salesproposalCtrl', function ($scope)
 {
-
+  
   (function(){
     emailjs.init("user_Vc5Bkgq73iehzqAZWo38i");
  })();
  
  
  var myform = $("form#myform");
- myform.submit(function(event){
-   event.preventDefault();
- 
-   var params = myform.serializeArray().reduce(function(obj, item) {
-      obj[item.name] = item.value;
-      return obj;
-   }, {});
- 
-   // Change to your service ID, or keep using the default service
-   var service_id = "default_service";
- 
-   var template_id = "template_Zi5Ei6W9";
-   myform.find("button").text("Sending...");
-   emailjs.send(service_id, template_id, params)
-     .then(function(){ 
-        alert("Sent!");
-        myform.find("button").text("Send");
-      }, function(err) {
-        alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
-        myform.find("button").text("Send");
-     });
- 
-   return false;
- });
+myform.submit(function(event){
+	event.preventDefault();
+
+	var params = myform.serializeArray().reduce(function(obj, item) {
+     obj[item.name] = item.value;
+     return obj;
+  }, {});
+
+  // Change to your service ID, or keep using the default service
+  var service_id = "default_service";
+
+  var template_id = "template_Zi5Ei6W9";
+  myform.find("button").text("Sending...");
+  emailjs.send(service_id, template_id, params)
+  	.then(function(){ 
+       alert("Sent!");
+       myform.find("button").text("Send");
+     }, function(err) {
+       alert("Send email failed!\r\n Response:\n " + JSON.stringify(err));
+       myform.find("button").text("Send");
+    });
+
+  return false;
+});
 
 
   $scope.mrcadd=function(){
@@ -287,9 +287,38 @@ items:"Callier ID and CallerId name"
     console.log(sign);
     localStorage.setItem('sign',sign)
     // sigImage.setAttribute("src", dataUrl);
-    window.location.replace("sharesalesproposalsaksadhfikdsahfkjdhsakfhdksahfkj238456289743.html");
+   
   }, false);
 
 })();
+
+
+
+$scope.passwordcall = function (length, special) {
+  var iteration = 0;
+  var password = "";
+  var randomNumber;
+  if(special == undefined){
+      var special = false;
+  }
+  while(iteration < length){
+    randomNumber = (Math.floor((Math.random() * 100)) % 94) + 33;
+    if(!special){
+      if ((randomNumber >=33) && (randomNumber <=47)) { continue; }
+      if ((randomNumber >=58) && (randomNumber <=64)) { continue; }
+      if ((randomNumber >=91) && (randomNumber <=96)) { continue; }
+      if ((randomNumber >=123) && (randomNumber <=126)) { continue; }
+    }
+    iteration++;
+    password += String.fromCharCode(randomNumber);
+  }
+  // document.getElementById('hash').innerHTML=password;
+  
+  $scope.hash='http://localhost/FormPortal-MVC-/public/formsindex.html#/:'+password;
+  console.log(password);
+}
+
+
+
 
 });
