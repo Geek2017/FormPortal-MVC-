@@ -38,10 +38,13 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
         }
     });
 
+    var ref = firebase.database().ref("com_profiles");
+    ref.orderByChild("cusid").equalTo(localStorage.getItem('curuserid')).on("child_added", function(snapshot) {
+        console.log(snapshot.val().comlogo);
+        sessionStorage.setItem('comlogo', snapshot.val().comlogo);
+    });
 
-
-
-
+    // $scope.comlogo ='';
 
     $scope.comname = localStorage.getItem('curcomname');
 
