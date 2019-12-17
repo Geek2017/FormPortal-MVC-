@@ -1,4 +1,6 @@
-angular.module('newApp').controller('tollfreeCtrl', function($scope) {
+'use strict';
+
+angular.module('newApp').controller('loaportCtrl', function($scope) {
 
     $('.wrapper').on('click', '.clone', function() {
         $('.clone').closest('.wrapper').find('.element').first().clone().appendTo('.results');

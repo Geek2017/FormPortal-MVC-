@@ -231,9 +231,12 @@
                             </div>
                         </div>
                         <div class="panel-footer">
-                            <button class="btn btn-default">Clear Form</button>
-                            <button class="btn btn-primary pull-right" ng-click="saveaddnumber();">Submit</button>
-
+                            <button class="btn btn-danger">Clear Form</button>
+                            <div class="btn-group pull-right ">
+                                <button class="btn btn-info">Print it</button>
+                                <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">Mail it</button>
+                                <button class="btn btn-success " id="sig-submitBtn">Save it</button>
+                            </div>
                         </div>
                     </div>
 

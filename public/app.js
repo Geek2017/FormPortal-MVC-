@@ -37,7 +37,8 @@ angular
                 templateUrl: 'views/eftauthorration.html'
             })
             .when('/loaport', {
-                templateUrl: 'views/loaport.html'
+                templateUrl: 'views/loaport.html',
+                controller: 'loaportCtrl'
             })
             .when('/quickInstruction', {
                 templateUrl: 'views/quickInstruction.html'
