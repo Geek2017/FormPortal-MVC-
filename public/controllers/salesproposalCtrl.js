@@ -3,6 +3,9 @@
 
 angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
+    $scope.url0 = 'Forms';
+    $scope.url1 = 'Sales Proposal';
+
     (function() {
         emailjs.init("user_Vc5Bkgq73iehzqAZWo38i");
     })();

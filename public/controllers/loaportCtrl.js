@@ -2,6 +2,10 @@
 
 angular.module('newApp').controller('loaportCtrl', function($scope) {
 
+    $scope.url0 = 'Forms';
+    $scope.url1 = 'Loa Port';
+
+
     $('.wrapper').on('click', '.clone', function() {
         $('.clone').closest('.wrapper').find('.element').first().clone().appendTo('.results');
     });

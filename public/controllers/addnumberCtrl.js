@@ -3,6 +3,9 @@
 
 angular.module('newApp').controller('addnumberdCtrl', function($scope) {
 
+    $scope.url0 = 'Forms';
+    $scope.url1 = 'Add Number';
+
     $('#logoimg').hide()
 
     firebase.auth().onAuthStateChanged(function(user) {

@@ -3,6 +3,9 @@
 
 angular.module('newApp').controller('indexdCtrl', function($scope) {
 
+    $scope.url0 = 'Home';
+    $scope.url1 = 'Dashboard';
+
 
     setTimeout(function() {
         document.getElementById("formportal").style.visibility = "visible";
