@@ -1,25 +1,24 @@
 'use strict';
 
 
-angular.module('sfApp').controller('formsindex', function ($scope,$location)
-{
-  
-// alert(window.location.pathname);
-var authurl=window.location.href 
+angular.module('sfApp').controller('formsindex', function($scope, $location) {
 
-var fields = authurl.split('#/:');
+    // alert(window.location.pathname);
+    var authurl = window.location.href
 
-var name = fields[0];
-var street = fields[1];
+    var fields = authurl.split('#/:');
 
-if(fields[1]=='ukjkYyi2QjDaHD9V'){
-    // window.location.href = "http://www.w3schools.com";
-    $location.path( "/sfsalesproposal" );
-}
+    var name = fields[0];
+    var street = fields[1];
+
+    if (fields[1] == 'x2iRBgXZM3BlBODe') {
+        // window.location.href = "http://www.w3schools.com";
+        $location.path("/sfsalesproposal");
+    }
 
 
-console.log(name);
-console.log(street);
+    console.log(name);
+    console.log(street);
 
 
 

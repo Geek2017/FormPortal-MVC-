@@ -12,6 +12,9 @@
 @import "rickshaw/rickshaw.css";
 @import "dropzone/dropzone.css";
 @import "animate/animate.min.css";
+
+/* PREDEFINED CLASSES */
+
 .clearfix {
     zoom: 1;
 }
@@ -34,6 +37,9 @@
     background: -ms-linear-gradient(left, #E04B4A 0%, #1caf9a 50%, #95b75d 100%);
     background: -webkit-gradient(linear, left top, right top, color-stop(0, #E04B4A), color-stop(0.5, #1caf9a), color-stop(1, #95b75d));
 }
+
+
+/* EOF PREDEFINED CLASSES */
 
 html * {
     outline: none !important;
@@ -7362,7 +7368,7 @@ input.ui-editRangeSlider-inputValue {
 }
 
 .wizard .actionBar {
-    margin-top: 42px;
+    margin-top: 10%;
 }
 
 .wizard .actionBar .btn.pull-right {

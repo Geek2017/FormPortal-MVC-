@@ -7,14 +7,13 @@
 
         <form class="form-horizontal">
             <div class="panel panel-default">
-
-                <div id="wpblue" class="panel  text-center">
-                    <div class="panel panel-success">
-
+                <div class="panel panel-success">
+                    <div class="panel-heading ">
                         <h3 class="panel-title"><img src="assets/images/plj.jpg" class="img-responsive pull-left" width="50%" src="" alt="log"></h3>
 
-
                     </div>
+                </div>
+                <div id="wpblue" class="panel panel-success text-center">
                     <h1>Proposal Specifications</h1>
                 </div>
                 <div class="panel-body">
@@ -417,18 +416,18 @@
                         <h5 class="modal-title" id="exampleModalLongTitle"></h5>
                         <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: none!important;">X</button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body ">
                         <form id="myform">
                             <label>Recipient Email:</label>
-                            <input type="text" name="email" class="form-control" />
+                            <input type="text" ng-model="mailadd" name="email" class="form-control" />
                             <label>Sender Name:</label>
-                            <input type="text" name="from_name" class="form-control" />
+                            <input type="text" ng-model="mailfrom" name="from_name" class="form-control" />
                             <label>Receiver Name:</label>
-                            <input type="text" name="to_name" class="form-control" />
+                            <input type="text" ng-model="mailto" name="to_name" class="form-control" />
                             <label>Hash Link:</label>
                             <input ng-model="hash" type="text" name="message_html" class="form-control" readonly/>
                             <br><br>
-                            <button class="btn btn-success btn-block">
+                            <button class="btn btn-success btn-block ">
                 Send
                 </button>
                         </form>

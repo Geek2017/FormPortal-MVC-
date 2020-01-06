@@ -318,9 +318,30 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
         $scope.hash = 'http://localhost/FormPortal-MVC-/public/formsindex.html#/:' + password;
         console.log(password);
+        sessionStorage.setItem('hkc', password);
     }
+    $("#myform").submit(function(event) {
 
 
+        var uid = firebase.database().ref().child('users').push().key;
+
+        var data = {
+            mailfrom: localStorage.getItem('curusermail'),
+            mailadd: $scope.mailto,
+            sendername: $scope.mailfrom,
+            recipientname: $scope.mailto,
+            form: 'f2',
+            haskkeycode: sessionStorage.getItem('hkc')
+        }
+
+        var updates = {};
+        updates['/sharedfroms/' + uid] = data;
+        firebase.database().ref().update(updates, alert('Data Saved!'));
+
+
+
+
+    });
 
 
 });
