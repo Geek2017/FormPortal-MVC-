@@ -44,8 +44,21 @@ angular.module('newApp').controller('usersprofileCrtl', function($scope) {
             });
         });
 
+        $("#userimg").change(function() {
+            console.log("A file has been selected.");
+            var file = document.querySelector('input[type=file]')['files'][0];
+            var reader = new FileReader();
+            var baseString;
+            reader.onloadend = function() {
+                baseString = reader.result;
+                console.log(baseString);
+                localStorage.setItem('userimg', baseString)
 
 
+
+            };
+            // reader.readAsDataURL(file);
+        });
 
         $('#updateprofile').on('submit', function(e) {
             e.preventDefault();
@@ -56,7 +69,8 @@ angular.module('newApp').controller('usersprofileCrtl', function($scope) {
                 cusemail: $('#usersmail').val(),
                 contact: $('#userscontacts').val(),
                 designation: $('#usersdesignation').val(),
-                userimages: localStorage.getItem('userimg')
+                userphone: $('#userphone').val(),
+                userimage: localStorage.getItem('userimg')
             }
 
             user.updateProfile({
