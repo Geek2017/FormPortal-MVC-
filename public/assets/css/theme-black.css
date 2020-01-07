@@ -7359,6 +7359,10 @@ input.ui-editRangeSlider-inputValue {
     margin-top: 30px;
 }
 
+.stepContainer {
+    height: 32%!important;
+}
+
 .wizard .actionBar {
     margin-top: 10%;
 }

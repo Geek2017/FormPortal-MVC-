@@ -17,8 +17,8 @@ $(document).ready(function() {
     //create firebase references
     var Auth = firebase.auth();
     var dbRef = firebase.database();
-    var usersRef = dbRef.ref('users')
-    var auth = null;
+
+
 
 
     firebase.auth().onAuthStateChanged(function(user) {
@@ -35,41 +35,32 @@ $(document).ready(function() {
         var file = document.querySelector('input[type=file]')['files'][0];
         var reader = new FileReader();
         var baseString;
+
         reader.onloadend = function() {
             baseString = reader.result;
             console.log(baseString);
             localStorage.setItem('base64', baseString)
 
-            var dbRef = firebase.database().ref().child('cus_data');
+            var partcusid = $('#cusid').val();
+
+            var dbRef = firebase.database().ref().child('partner_data');
             dbRef.on('value', snapshot => {
                 var data = snapshot.val();
                 for (i = 0; i <= data.length; i++) {
-                    var dbRef0 = firebase.database().ref().child('cus_data/' + i + '/customerid');
-                    dbRef0.on('value', dataval => {
+                    if (data[i].custid == partcusid) {
+                        console.log(data[i])
+                        $('#comname').val(data[i].company)
+                        $('#comcontact').val(data[i].phone)
+                        $('#comaddress').val(data[i].address + " " + data[i].state)
+                        break;
+                    }
 
-                        if (dataval.val() == $('#cusid').val()) {
-                            // console.log(dataval.val(),i);
-                            // alert('Customer Validated AutoFill will take place');
-                            var dbRef = firebase.database().ref().child('cus_data/' + i);
-                            dbRef.on('value', calling => {
-                                // console.log(calling.val());
-                                $('#comname').val(calling.val().company);
-                                $('#comcontact').val(calling.val().mainphone);
-                                $('#comaddress').val(calling.val().address1 + ' ' + calling.val().state);
-
-                            });
-
-
-
-                        }
-
-                    });
                 }
 
             })
 
         };
-        // reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
     });
 
     $("#userimg").change(function() {
@@ -141,6 +132,7 @@ $(document).ready(function() {
                             var cusemail = $('#cusemail').val();
 
 
+
                             var data = {
                                 user_id: uid,
                                 cusid: cusid,
@@ -148,6 +140,7 @@ $(document).ready(function() {
                                 cusemail: cusemail,
                                 role: "admin",
                                 designation: "Account Manager",
+                                userimage: localStorage.getItem('userimgbase64')
 
                             }
 
