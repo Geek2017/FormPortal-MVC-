@@ -43,10 +43,12 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
     var myVar = setInterval(myTimer, 100);
 
     function myTimer() {
+
         var ref = firebase.database().ref("users");
         ref.orderByChild("cusemail").equalTo(localStorage.getItem('curusermail')).on("child_added", function(snapshot) {
-            console.log(snapshot.val());
-
+            console.log('Processing....');
+            sessionStorage.setItem('curuserid', snapshot.val().cusid);
+            runtime();
             if (snapshot.val().userimage) {
 
                 sessionStorage.setItem('userimg', snapshot.val().userimage);
@@ -68,23 +70,32 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
 
     function myStopFunction() {
         clearInterval(myVar);
+        var d2 = document.getElementById('span');
+        d2.insertAdjacentHTML('beforeend', '' + sessionStorage.getItem('curcomname') + '');
     }
 
     setTimeout(function() {
         document.getElementById("formportal").style.visibility = "visible";
         myStopFunction()
+
     }, 5000);
 
+    function runtime() {
 
-    var ref = firebase.database().ref("com_profiles");
-    ref.orderByChild("cusid").equalTo(localStorage.getItem('curuserid')).on("child_added", function(snapshot) {
-        // console.log(snapshot.val().comlogo);
-        sessionStorage.setItem('comlogo', snapshot.val().comlogo);
-    });
+        var ref = firebase.database().ref("com_profiles");
+        ref.orderByChild("cusid").equalTo(sessionStorage.getItem('curuserid')).on("child_added", function(snapshot) {
+            console.log('Logo is Set');
+            sessionStorage.setItem('curcomname', snapshot.val().comname);
+            sessionStorage.setItem('comlogo', snapshot.val().comlogo);
+        });
 
-    // $scope.comlogo ='';
 
-    $scope.comname = localStorage.getItem('curcomname');
+
+    }
+
+
+
+
 
     $scope.logout = function() {
 

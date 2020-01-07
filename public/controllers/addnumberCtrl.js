@@ -6,6 +6,22 @@ angular.module('newApp').controller('addnumberdCtrl', function($scope) {
     $scope.url0 = 'Forms';
     $scope.url1 = 'Add Number';
 
+    var myVar = setInterval(myTimer, 100);
+
+    function myTimer() {
+        $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));
+        $(".panel").css("border-top-color", localStorage.getItem('unicolor'));
+        $(".panel-warning").css("border-top-color", localStorage.getItem('unicolor'));
+        $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
+        console.log('addnumber color theme set')
+
+    }
+
+    setTimeout(function() {
+        clearInterval(myVar);
+    }, 2000);
+
+
     $('#logoimg').hide()
 
     firebase.auth().onAuthStateChanged(function(user) {

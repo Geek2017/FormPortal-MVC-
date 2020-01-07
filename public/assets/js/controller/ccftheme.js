@@ -29,17 +29,22 @@ $(document).ready(function() {
     });
 
 
+    var myVar = setInterval(myTimer, 100);
+
+    function myTimer() {
+        $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));
+        $(".panel").css("border-top-color", localStorage.getItem('unicolor'));
+        $(".panel-warning").css("border-top-color", localStorage.getItem('unicolor'));
+        $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
+        console.log('red')
+    }
+
+    setTimeout(function() {
+        clearInterval(myVar);
+    }, 1000);
 
 
-    $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));
-    $(".panel.panel-warning").css("border-top-color", localStorage.getItem('unicolor'));
-    $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
-    $(".panel.panel-success").css("border-top-color", localStorage.getItem('unicolor'));
 
-
-
-
-    //theme color
 
     $("#default").click(function() {
         localStorage.setItem('theme', 'assets/css/theme-default.css')
