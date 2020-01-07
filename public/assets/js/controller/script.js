@@ -31,36 +31,38 @@ $(document).ready(function() {
     });
 
     $("#comlogo").change(function() {
-        console.log("A file has been selected.");
-        var file = document.querySelector('input[type=file]')['files'][0];
-        var reader = new FileReader();
-        var baseString;
 
-        reader.onloadend = function() {
-            baseString = reader.result;
-            console.log(baseString);
-            localStorage.setItem('base64', baseString)
+        if (this.files && this.files[0]) {
 
-            var partcusid = $('#cusid').val();
+            var FR = new FileReader();
 
-            var dbRef = firebase.database().ref().child('partner_data');
-            dbRef.on('value', snapshot => {
-                var data = snapshot.val();
-                for (i = 0; i <= data.length; i++) {
-                    if (data[i].custid == partcusid) {
-                        console.log(data[i])
-                        $('#comname').val(data[i].company)
-                        $('#comcontact').val(data[i].phone)
-                        $('#comaddress').val(data[i].address + " " + data[i].state)
-                        break;
+            FR.addEventListener("load", function(e) {
+                localStorage.setItem('companylogo', e.target.result)
+
+                var partcusid = $('#cusid').val();
+
+                var dbRef = firebase.database().ref().child('partner_data');
+                dbRef.on('value', snapshot => {
+                    var data = snapshot.val();
+                    for (i = 0; i <= data.length; i++) {
+                        if (data[i].custid == partcusid) {
+                            console.log(data[i])
+                            $('#comname').val(data[i].company)
+                            $('#comcontact').val(data[i].phone)
+                            $('#comaddress').val(data[i].address + " " + data[i].state)
+                            break;
+                        }
+
                     }
 
-                }
+                })
+            });
 
-            })
+            FR.readAsDataURL(this.files[0]);
+        }
 
-        };
-        reader.readAsDataURL(file);
+        console.log("A file has been selected.");
+
     });
 
     $("#userimg").change(function() {
@@ -70,7 +72,7 @@ $(document).ready(function() {
         var baseString;
         reader.onloadend = function() {
             baseString = reader.result;
-            console.log(baseString);
+
             localStorage.setItem('userimgbase64', baseString)
         };
         reader.readAsDataURL(file);
@@ -156,7 +158,7 @@ $(document).ready(function() {
 
                             var uid = firebase.database().ref().child('com_profiles').push().key;
                             var cusid = $('#cusid').val();
-                            var comlogo = localStorage.getItem('base64');
+                            var comlogo = localStorage.getItem('companylogo');
                             var comname = $('#comname').val();
                             var comcontact = $('#comcontact').val();
                             var comaddress = $('#comaddress').val();

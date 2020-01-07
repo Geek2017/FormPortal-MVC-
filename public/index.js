@@ -65,11 +65,10 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
     }
 
     function myStopFunction() {
-
+        unicolorandtheme();
         clearInterval(myVar);
         var d2 = document.getElementById('span');
         d2.insertAdjacentHTML('beforeend', '' + sessionStorage.getItem('curcomname') + '');
-
     }
 
     setTimeout(function() {
@@ -100,14 +99,12 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
 
 
     function unicolorandtheme() {
-
         $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));
         $(".panel").css("border-top-color", localStorage.getItem('unicolor'));
         $(".panel-warning").css("border-top-color", localStorage.getItem('unicolor'));
         $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
         console.log('red')
         $("#theme").prop("href", localStorage.getItem('theme'));
-
     }
 
 
