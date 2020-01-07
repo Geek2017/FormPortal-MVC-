@@ -7,10 +7,6 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
     $scope.url1 = 'Dashboard';
 
 
-
-
-
-
     var config = {
         apiKey: "AIzaSyArkU60LENXmQPHRvWoK26YagzprezV3dg",
         authDomain: "cmlformportal-b8674.firebaseapp.com",
@@ -69,14 +65,15 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
     }
 
     function myStopFunction() {
+
         clearInterval(myVar);
         var d2 = document.getElementById('span');
         d2.insertAdjacentHTML('beforeend', '' + sessionStorage.getItem('curcomname') + '');
+
     }
 
     setTimeout(function() {
         document.getElementById("formportal").style.visibility = "visible";
-        myStopFunction()
 
     }, 5000);
 
@@ -89,12 +86,29 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
             sessionStorage.setItem('comlogo', snapshot.val().comlogo);
         });
 
+        var ref = firebase.database().ref("theme_info");
+        ref.orderByChild("cusid").equalTo(sessionStorage.getItem('curuserid')).on("child_added", function(snapshot) {
+            console.log('Unicolor & Theme is Set');
+            localStorage.setItem('unicolor', snapshot.val().formcolor);
+            localStorage.setItem('theme', snapshot.val().theme);
+            myStopFunction();
+        });
+
 
 
     }
 
 
+    function unicolorandtheme() {
 
+        $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));
+        $(".panel").css("border-top-color", localStorage.getItem('unicolor'));
+        $(".panel-warning").css("border-top-color", localStorage.getItem('unicolor'));
+        $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
+        console.log('red')
+        $("#theme").prop("href", localStorage.getItem('theme'));
+
+    }
 
 
     $scope.logout = function() {
