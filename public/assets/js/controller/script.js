@@ -18,15 +18,9 @@ $(document).ready(function() {
     var Auth = firebase.auth();
     var dbRef = firebase.database();
 
-
-
-
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-            // console.log(user)
-
             $("#uname").text(user.displayName);
-
         }
     });
 

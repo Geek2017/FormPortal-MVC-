@@ -339,7 +339,7 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
         }
         // document.getElementById('hash').innerHTML=password;
 
-        $scope.hash = 'http://localhost/FormPortal-MVC-/public/formsindex.html#/:' + password;
+        $scope.hash = 'http://localhost/FormPortal-MVC/public/formsindex.html#/:' + password;
         console.log(password);
         sessionStorage.setItem('hkc', password);
     }
@@ -350,19 +350,16 @@ angular.module('newApp').controller('salesproposalCtrl', function($scope) {
 
         var data = {
             mailfrom: localStorage.getItem('curusermail'),
+            cusid: sessionStorage.getItem('curuserid'),
             mailadd: $scope.mailto,
             sendername: $scope.mailfrom,
             recipientname: $scope.mailto,
-            form: 'f2',
-            haskkeycode: sessionStorage.getItem('hkc')
+            hashkeycode: sessionStorage.getItem('hkc')
         }
 
         var updates = {};
-        updates['/sharedfroms/' + uid] = data;
+        updates['/sfsalespropsal/' + uid] = data;
         firebase.database().ref().update(updates, alert('Data Saved!'));
-
-
-
 
     });
 

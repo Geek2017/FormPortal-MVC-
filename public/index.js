@@ -8,7 +8,7 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
 
 
 
-    $(".xn-openable").addClass("active");
+    $(".activate").addClass("active");
 
 
 

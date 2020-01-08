@@ -54,4 +54,5 @@ angular
                 templateUrl: 'views/usersprofile.html',
                 controller: 'usersprofileCrtl'
             })
+
     });
