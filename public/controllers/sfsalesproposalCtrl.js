@@ -167,13 +167,23 @@ angular.module('sfApp').controller('sfsalesproposalCtrl', function($scope) {
             }
         }
 
-        if (sessionStorage.getItem('comlogo')) {
-            console.log('imageloaded')
-            $('#comlogo').attr('src', sessionStorage.getItem('comlogo'));
-        } else {
-            console.log('imagenotloaded')
-            $('#comlogo').attr('src', 'assets/images/plj.jpg')
+        var myVar = setInterval(myTimer, 300);
+
+        function myTimer() {
+
+            if (sessionStorage.getItem('comlogo')) {
+                console.log('imageloaded')
+                $('#comlogo').attr('src', sessionStorage.getItem('comlogo'));
+            } else {
+                console.log('imagenotloaded')
+                $('#comlogo').attr('src', 'assets/images/plj.jpg')
+            }
+
         }
+
+        setTimeout(function() {
+            clearInterval(myVar);
+        }, 3000);
 
     })();
 });
