@@ -7,6 +7,11 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
     $scope.url1 = 'Dashboard';
 
 
+
+    $(".xn-openable").addClass("active");
+
+
+
     var config = {
         apiKey: "AIzaSyArkU60LENXmQPHRvWoK26YagzprezV3dg",
         authDomain: "cmlformportal-b8674.firebaseapp.com",

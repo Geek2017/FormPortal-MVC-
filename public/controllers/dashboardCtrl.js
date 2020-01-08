@@ -7,6 +7,7 @@ angular.module('newApp').controller('dashboardCtrl', function($scope) {
     $scope.url1 = 'Dashboard';
 
     var myVar = setInterval(myTimer, 100);
+    $(".xn-openable").addClass("active");
 
     function myTimer() {
         $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));

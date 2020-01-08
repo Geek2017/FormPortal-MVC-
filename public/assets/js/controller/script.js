@@ -37,7 +37,9 @@ $(document).ready(function() {
             var FR = new FileReader();
 
             FR.addEventListener("load", function(e) {
-                localStorage.setItem('companylogo', e.target.result)
+                sessionStorage.setItem('companylogo', e.target.result)
+
+                console.log(e.target)
 
                 var partcusid = $('#cusid').val();
 
@@ -158,7 +160,7 @@ $(document).ready(function() {
 
                             var uid = firebase.database().ref().child('com_profiles').push().key;
                             var cusid = $('#cusid').val();
-                            var comlogo = localStorage.getItem('companylogo');
+                            var comlogo = sessionStorage.getItem('companylogo');
                             var comname = $('#comname').val();
                             var comcontact = $('#comcontact').val();
                             var comaddress = $('#comaddress').val();

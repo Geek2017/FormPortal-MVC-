@@ -12,6 +12,14 @@ angular.module('newApp').controller('tollfreeCtrl', function($scope) {
         $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
         console.log('tollfee color theme set')
 
+        if (sessionStorage.getItem('comlogo')) {
+            console.log('imageloaded')
+            $('#comlogo').attr('src', sessionStorage.getItem('comlogo'));
+        } else {
+            console.log('imagenotloaded')
+            $('#comlogo').attr('src', 'assets/images/plj.jpg')
+        }
+
     }
 
     setTimeout(function() {
