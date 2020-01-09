@@ -6,7 +6,10 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
     $scope.url0 = 'Home';
     $scope.url1 = 'Dashboard';
 
+    setTimeout(function() {
+        document.getElementById("formportal").style.visibility = "visible";
 
+    }, 4000);
 
     $(".activate").addClass("active");
 
@@ -28,8 +31,6 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
 
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-            $('curusername').val(user.displayName);
-            // console.log(user);
 
             localStorage.setItem('curusermail', user.email);
 
@@ -50,6 +51,14 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
             console.log('Processing....');
             sessionStorage.setItem('curuserid', snapshot.val().cusid);
             runtime();
+
+
+            var datacontent = snapshot.val().role
+
+            datacontent == "0" ? $('#gearup').hide() : $('#gearup').show();
+
+            sessionStorage.setItem('role', snapshot.val().role);
+
             if (snapshot.val().userimage) {
 
                 sessionStorage.setItem('userimg', snapshot.val().userimage);
@@ -58,7 +67,6 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
         });
         if (sessionStorage.getItem('userimg')) {
             console.log('imageloaded')
-            $scope.userimg = sessionStorage.getItem('userimg');
             $('#profile-mini').attr('src', sessionStorage.getItem('userimg'));
             $('#profile-image').attr('src', sessionStorage.getItem('userimg'));
 
@@ -72,14 +80,13 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
     function myStopFunction() {
         unicolorandtheme();
         clearInterval(myVar);
-        var d2 = document.getElementById('span');
-        d2.insertAdjacentHTML('beforeend', '' + sessionStorage.getItem('curcomname') + '');
     }
 
     setTimeout(function() {
-        document.getElementById("formportal").style.visibility = "visible";
-
-    }, 5000);
+        var d2 = document.getElementById('span');
+        d2.insertAdjacentHTML('beforeend', '' + sessionStorage.getItem('curcomname') + '');
+        myStopFunction();
+    }, 3000);
 
     function runtime() {
 
@@ -95,7 +102,6 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
             console.log('Unicolor & Theme is Set');
             localStorage.setItem('unicolor', snapshot.val().formcolor);
             localStorage.setItem('theme', snapshot.val().theme);
-            myStopFunction();
         });
 
 

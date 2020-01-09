@@ -114,6 +114,7 @@ body {
 
 .page-container .page-sidebar.page-sidebar-fixed {
     position: fixed;
+    background: 2d3945;
 }
 
 .page-container.page-container-wide .page-sidebar {

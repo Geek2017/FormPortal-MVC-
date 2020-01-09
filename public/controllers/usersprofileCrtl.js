@@ -16,7 +16,7 @@ angular.module('newApp').controller('usersprofileCrtl', function($scope) {
             reader.onloadend = function() {
                 baseString = reader.result;
                 console.log(baseString);
-                localStorage.setItem('userimg', baseString)
+                sessionStorage.setItem('userimg', baseString)
             };
             reader.readAsDataURL(file);
         });
@@ -33,29 +33,29 @@ angular.module('newApp').controller('usersprofileCrtl', function($scope) {
                 if (user.providerData[0].email == childData.cusemail) {
                     console.log(childSnapshot.key);
 
+                    console.log(childData);
+
                     localStorage.setItem('childkey', childSnapshot.key)
 
                     $('#usersname').val(childData.cusname);
                     $('#usersmail').val(childData.cusemail);
-                    $('#userscontacts').val(childData.contact);
+                    $('#mobile').val(childData.mobile);
                     $('#usersdesignation').val(childData.designation);
+                    $('#phone').val(childData.phone)
                 }
 
             });
         });
 
         $("#userimg").change(function() {
-            console.log("A file has been selected.");
+            console.log("A User Image has been selected.");
             var file = document.querySelector('input[type=file]')['files'][0];
             var reader = new FileReader();
             var baseString;
             reader.onloadend = function() {
                 baseString = reader.result;
                 console.log(baseString);
-                localStorage.setItem('userimg', baseString)
-
-
-
+                sessionStorage.setItem('userimg', baseString)
             };
             // reader.readAsDataURL(file);
         });
@@ -65,21 +65,28 @@ angular.module('newApp').controller('usersprofileCrtl', function($scope) {
 
             var uid = firebase.database().ref().child('users').push().key;
             var data = {
+                cusid: sessionStorage.getItem('curuserid'),
                 cusname: $('#usersname').val(),
                 cusemail: $('#usersmail').val(),
-                contact: $('#userscontacts').val(),
+                phone: $('#phone').val(),
                 designation: $('#usersdesignation').val(),
-                userphone: $('#userphone').val(),
-                userimage: localStorage.getItem('userimg')
+                mobile: $('#mobile').val(),
+                userimage: sessionStorage.getItem('userimg'),
+                used_id: localStorage.getItem('childkey'),
+                role: sessionStorage.getItem('role')
             }
 
-            user.updateProfile({
-                displayName: $('#usersname').val(),
-                photoURL: ""
-            })
+            if (user) {
+                user.updateProfile({
+                    displayName: $('#usersname').val()
+                })
+            }
+
 
             var myDiv = document.getElementById("curusername");
             myDiv.innerHTML = '<p>' + $('#usersname').val() + '</p>';
+            $('#profile-mini').attr('src', sessionStorage.getItem('userimg'));
+            $('#profile-image').attr('src', sessionStorage.getItem('userimg'));
 
             var updates = {};
             updates['/users/' + localStorage.getItem('childkey')] = data;

@@ -136,7 +136,7 @@ $(document).ready(function() {
                                 cusid: cusid,
                                 cusname: cusname,
                                 cusemail: cusemail,
-                                role: "admin",
+                                role: "1",
                                 designation: "Account Manager",
                                 userimage: localStorage.getItem('userimgbase64')
 
