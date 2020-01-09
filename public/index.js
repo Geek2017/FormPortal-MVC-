@@ -9,7 +9,7 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
     setTimeout(function() {
         document.getElementById("formportal").style.visibility = "visible";
 
-    }, 4000);
+    }, 5000);
 
     $(".activate").addClass("active");
 
@@ -32,6 +32,7 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
 
+
             localStorage.setItem('curusermail', user.email);
 
             var d1 = document.getElementById('curusername');
@@ -50,6 +51,8 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
         ref.orderByChild("cusemail").equalTo(localStorage.getItem('curusermail')).on("child_added", function(snapshot) {
             console.log('Processing....');
             sessionStorage.setItem('curuserid', snapshot.val().cusid);
+            localStorage.setItem('childkey', snapshot.key)
+
             runtime();
 
 

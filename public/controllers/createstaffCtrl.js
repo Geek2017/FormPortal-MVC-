@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('newApp').controller('createstaffdCtrl', function($scope) {
+angular.module('newApp').controller('createstaffdCtrl', function($scope, $filter) {
 
     $scope.url0 = 'Forms';
     $scope.url1 = 'Credit Card Auth';
@@ -17,15 +17,18 @@ angular.module('newApp').controller('createstaffdCtrl', function($scope) {
 
     fb.on("value", function(snapshot) {
         $scope.$apply(function() {
-            $scope.stafflists = snapshot.val();
-            console.log(snapshot.val());
+            $scope.stafflist = snapshot.val();
+            delete $scope.stafflist[localStorage.getItem('childkey')]
+            $scope.stafflists = $scope.stafflist
+            console.log('Loading Staff Data...');
         });
     });
 
+    $scope.limitit = 2;
 
 
     console.log($scope.stafflists);
-
+    $('.parent').find('div:first').remove();
 
     $scope.crearestaff = function() {
 
