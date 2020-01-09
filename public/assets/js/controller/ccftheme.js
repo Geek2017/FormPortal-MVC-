@@ -29,23 +29,6 @@ $(document).ready(function() {
     });
 
 
-    var myVar = setInterval(myTimer, 100);
-
-    function myTimer() {
-        $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));
-        $(".panel").css("border-top-color", localStorage.getItem('unicolor'));
-        $(".panel-warning").css("border-top-color", localStorage.getItem('unicolor'));
-        $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
-        console.log('red')
-    }
-
-    setTimeout(function() {
-        clearInterval(myVar);
-    }, 1000);
-
-
-
-
     $("#default").click(function() {
         localStorage.setItem('theme', 'assets/css/theme-default.css')
         $("#theme").prop("href", 'assets/css/theme-default.css');
