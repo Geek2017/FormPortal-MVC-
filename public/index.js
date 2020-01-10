@@ -67,6 +67,7 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
         clearInterval(myVar);
         setTimeout(function() {
             document.getElementById("formportal").style.visibility = "visible";
+            document.getElementById("spinner").style.visibility = "hidden";
             $("#span").text(sessionStorage.getItem('curcomname'));
         }, 2000);
     }
@@ -111,9 +112,6 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
 
             var d1 = document.getElementById('curusername');
             d1.insertAdjacentHTML('beforeend', '<p>' + user.displayName + '</p>');
-
-            // var d2 = document.getElementById('span');
-            // d2.insertAdjacentHTML('beforeend', '' + sessionStorage.getItem('curcomname') + '');
 
         } else {
             window.location.replace("login.html");
