@@ -10,10 +10,6 @@ angular
                 templateUrl: 'views/dashboard.html',
                 controller: 'dashboardCtrl'
             })
-            .when('/sharesalesproposal/16461231321634', {
-                templateUrl: 'views/sharesalesproposal.html',
-                controller: 'sharesalesproposalCtrl'
-            })
             .when('/createstaff', {
                 templateUrl: 'views/createstaff.html',
                 controller: 'createstaffdCtrl'
