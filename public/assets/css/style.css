@@ -59,6 +59,7 @@ body {
     border-radius: 50%;
     animation: spin infinite linear 2s;
     position: fixed;
+    z-index: 1;
 }
 
 .spinner {
@@ -84,4 +85,8 @@ body {
     bottom: 8px;
     left: 8px;
     right: 8px;
+}
+
+.spinit {
+    visibility: hidden;
 }

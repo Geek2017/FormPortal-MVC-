@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('newApp').controller('createstaffdCtrl', function($scope, $filter) {
+angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scope) {
 
     $scope.url0 = 'Forms';
     $scope.url1 = 'Credit Card Auth';
@@ -18,19 +18,28 @@ angular.module('newApp').controller('createstaffdCtrl', function($scope, $filter
 
     var fb = firebase.database().ref("users");
 
-    fb.on("value", function(snapshot) {
-        $scope.$apply(function() {
-            $scope.stafflist = snapshot.val();
-            delete $scope.stafflist[localStorage.getItem('childkey')]
-            $scope.stafflists = $scope.stafflist
-            console.log('Loading Staff Data...');
-        });
+    fb.orderByChild("cusid").equalTo(sessionStorage.getItem('curuserid')).on("value", function(snapshot) {
+        $timeout(function() {
+            $scope.$apply(function() {
+
+                $scope.stafflist = snapshot.val();
+                delete $scope.stafflist[localStorage.getItem('childkey')]
+
+                $scope.stafflists = $scope.stafflist
+
+                // if ($scope.stafflist.cusid == sessionStorage.getItem('curuserid')) {
+                //     $scope.stafflists = $scope.stafflist
+                // }
+
+            });
+
+        }, 500);
     });
 
     $scope.limitit = 2;
 
 
-    console.log($scope.stafflists);
+
     $('.parent').find('div:first').remove();
 
     $scope.crearestaff = function() {

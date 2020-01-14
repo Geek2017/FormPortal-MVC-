@@ -6,11 +6,13 @@
     <title>Form Portal</title>
 
     <link rel="stylesheet" type="text/css" id="theme" href="assets/css/theme-default.css" />
+    <link rel="stylesheet" type="text/css" id="theme" href="assets/css/style.css" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="icon" href="assets/images/icon.ico" type="image/x-icon" />
+
     <!-- END META SECTION -->
 
     <script type="text/javascript" src="assets/js/plugins/jquery/jquery.min.js"></script>
@@ -24,9 +26,46 @@
 
 <body>
 
-    <div id="container" class="login-container">
+    <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+        <div class="mb-container">
+            <div class="mb-middle">
+                <div class="mb-content">
+                    <p>
+                        <h3> Make Sure all your inpust are correct kindly validate first before you proceed!</h3>
+                    </p>
+                    <p>
+                        <h1> Are you sure you want to proceed?</h1>
+                    </p>
+                </div>
+                <div class="mb-footer">
+                    <div class="pull-right">
+                        <a href="#" id="callregister" class="btn btn-success btn-lg mb-control-close">Yes</a>
+                        <button class="btn btn-default btn-lg mb-control-close">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <div class="login-box animated fadeInDown" style="width:800px!important">
+
+    <div class="message-box animated fadeIn" data-sound="alert" id="datasent">
+        <div class="mb-container">
+            <div class="mb-middle">
+                <div class="mb-content">
+                    <p>
+                        <h1>SUCCESS! CHECK YOUR EMAIL!</h1>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="spinner" class="spinner spinit">
+    </div>
+
+    <div id="container" class="login-container ">
+
+        <div class="login-box animated fadeInDown " style="width:800px!important">
             <div class="text-center">
                 <img class="img-responsive" src="assets/img/CCM.png" alt="logo" style="height: 12%;width: 100%;"> <br>
 
@@ -305,6 +344,7 @@
             </div>
 
         </div>
+
         <!-- END MESSAGE BOX-->
 
         <!-- START PRELOADS -->
@@ -339,7 +379,7 @@
         <script type="text/javascript" src="assets/js/actions.js"></script>
 
 
-        <script src="assets/js/controller/script.js"></script>
+        <script src="assets/js/script.js"></script>
 
         <!-- END TEMPLATE -->
         <!-- END SCRIPTS -->
