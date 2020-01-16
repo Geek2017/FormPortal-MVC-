@@ -44,7 +44,7 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
 
     $scope.crearestaff = function() {
 
-        alert('checking')
+       console.log('checking....')
         var data = {
             stuffname: $('#stuffname').val(),
             stuffmail: $('#stuffmail').val(),
@@ -62,10 +62,12 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
         if (data.stuffmail != '' && passwords.password != '' && passwords.cPassword != '') {
             if (passwords.password == passwords.cPassword) {
                 //create the user
-
+             
                 firebase.auth()
                     .createUserWithEmailAndPassword(data.stuffmail, passwords.password)
                     .then(function(user) {
+
+                        $(".modal-content").modal("show");
 
                         sendEmailVerification(data);
                         save_cus_credencials();
@@ -125,7 +127,7 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
                         function refresh() {
                             setTimeout(function() {
                                 alert("Data Successfully Sent");
-
+                                $(".modal-content").modal("hide");
                             }, 1000);
                         }
 
