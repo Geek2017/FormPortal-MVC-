@@ -6,13 +6,36 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
     $(".activate").removeClass("active");
     $(".activate").addClass("active");
 
-    $scope.staffdelete = function(email) {
-        alert(email);
+    $scope.confirmation = function(mail) {
+        $('#message-box-danger').addClass('open')
+        localStorage.setItem('delitem', mail);
+        console.log('Confirmed.....')
     }
 
-    $scope.$watchCollection("staffilter", function(newVal) {
-        console.log("Hey, the filtered collection has changed!");
-    });
+    $scope.confirmationclose = function() {
+        $('#message-box-danger').removeClass('open')
+
+    }
+
+    $scope.deleteInfo = function() {
+
+        var ref = firebase.database().ref("users");
+        ref.orderByChild("cusemail").equalTo(localStorage.getItem('delitem')).on("child_added", function(snapshot) {
+
+            // alert(snapshot.key);
+            var adaRef = firebase.database().ref('users/' + snapshot.key);
+            adaRef.remove()
+                .then(function() {
+                    console.log("Remove succeeded.")
+                    $scope.confirmationclose();
+                })
+                .catch(function(error) {
+                    console.log("Remove failed: " + error.message)
+                });
+
+        });
+    }
+
 
     var fb = firebase.database().ref("users");
 
@@ -24,10 +47,6 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
                 delete $scope.stafflist[localStorage.getItem('childkey')]
 
                 $scope.stafflists = $scope.stafflist
-
-                // if ($scope.stafflist.cusid == sessionStorage.getItem('curuserid')) {
-                //     $scope.stafflists = $scope.stafflist
-                // }
 
             });
 
@@ -53,8 +72,7 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
 
     $scope.crearestaff = function() {
 
-
-        alert('checking')
+        console.log('checking....')
         var data = {
             stuffname: $('#stuffname').val(),
             stuffmail: $('#stuffmail').val(),
@@ -75,6 +93,8 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
                 firebase.auth()
                     .createUserWithEmailAndPassword(data.stuffmail, passwords.password)
                     .then(function(user) {
+
+                        $(".toggle").modal("toggle");
 
                         sendEmailVerification(data);
                         save_cus_credencials();
@@ -125,16 +145,17 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
                             var updates = {};
                             updates['/users/' + uid] = data;
                             firebase.database().ref().update(updates);
-                            refresh(localStorage.setItem("hidme", 1));
-
+                            refresh();
+                            $('.xn-openable').removeClass('activate')
                         }
 
 
 
                         function refresh() {
                             setTimeout(function() {
-                                alert("Data Successfully Sent");
 
+                                $('.xn-openable').addClass('active')
+                                console.log('close open......')
                             }, 1000);
                         }
 

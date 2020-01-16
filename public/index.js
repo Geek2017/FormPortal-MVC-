@@ -6,18 +6,27 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
     $scope.url0 = 'Home';
     $scope.url1 = 'Dashboard';
 
-
-
-    $(".activate").addClass("active");
-
-
     var config = {
         apiKey: "AIzaSyArkU60LENXmQPHRvWoK26YagzprezV3dg",
         authDomain: "cmlformportal-b8674.firebaseapp.com",
         databaseURL: "https://cmlformportal-b8674.firebaseio.com/",
         projectId: "cmlformportal-b8674"
     };
+
     firebase.initializeApp(config);
+
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            localStorage.setItem('curusermail', user.email)
+
+        } else {
+            window.location.replace("login.html");
+        }
+    });
+
+    $(".activate").addClass("active");
+
+
 
     var myVar = setInterval(myTimer, 100);
 
@@ -27,7 +36,9 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
         ref.orderByChild("cusemail").equalTo(localStorage.getItem('curusermail')).on("child_added", function(snapshot) {
             console.log('Processing....');
             if (snapshot.val()) {
+
                 runtime();
+
                 console.log('Processing User Complete!');
 
                 sessionStorage.setItem('curuserid', snapshot.val().cusid);
@@ -38,7 +49,11 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
 
                 datacontent == "0" ? $('#gearup').hide() : $('#gearup').show();
 
+                sessionStorage.setItem('cusname', snapshot.val().cusname);
+
                 sessionStorage.setItem('role', snapshot.val().role);
+
+                sessionStorage.setItem('designation', snapshot.val().designation);
 
                 sessionStorage.setItem('userimg', snapshot.val().userimage);
             } else {
@@ -51,8 +66,10 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
             $scope.userimg = sessionStorage.getItem('userimg');
             $('#profile-mini').attr('src', sessionStorage.getItem('userimg'));
             $('#profile-image').attr('src', sessionStorage.getItem('userimg'));
-            // $('<h3>' + sessionStorage.getItem('curcomname') + '</h3>').appendTo('#span');
 
+            $("#job").text(sessionStorage.getItem('designation'));
+
+            $("#curusername").text(sessionStorage.getItem('cusname'));
 
         } else {
             console.log('imagenotloaded')
@@ -69,6 +86,8 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
             document.getElementById("formportal").style.visibility = "visible";
             document.getElementById("spinner").style.visibility = "hidden";
             $("#span").text(sessionStorage.getItem('curcomname'));
+
+
         }, 2000);
     }
 
@@ -104,19 +123,7 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
     }
 
 
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            $('curusername').val(user.displayName);
 
-            localStorage.setItem('curusermail', user.email);
-
-            var d1 = document.getElementById('curusername');
-            d1.insertAdjacentHTML('beforeend', '<p>' + user.displayName + '</p>');
-
-        } else {
-            window.location.replace("login.html");
-        }
-    });
 
 
     $scope.logout = function() {
