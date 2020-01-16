@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scope) {
 
     $scope.url0 = 'Forms';
@@ -8,13 +6,13 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
     $(".activate").removeClass("active");
     $(".activate").addClass("active");
 
-    // var ref = firebase.database().ref("users");
-    // ref.orderByChild("cusid").equalTo(sessionStorage.getItem('curuserid')).on("child_added", function(snapshot) {
+    $scope.staffdelete = function(email) {
+        alert(email);
+    }
 
-    //     // console.log('Staff List Loaded...', snapshot.val());
-
-
-    // });
+    $scope.$watchCollection("staffilter", function(newVal) {
+        console.log("Hey, the filtered collection has changed!");
+    });
 
     var fb = firebase.database().ref("users");
 
@@ -33,7 +31,7 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
 
             });
 
-        }, 500);
+        }, 300);
     });
 
     $scope.limitit = 2;
@@ -42,14 +40,25 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
 
     $('.parent').find('div:first').remove();
 
+
+    $scope.addstaff = function() {
+        $(".addstaff").addClass('open')
+
+    }
+
+    $scope.closestaff = function() {
+        $(".addstaff").removeClass('open')
+
+    }
+
     $scope.crearestaff = function() {
+
 
         alert('checking')
         var data = {
             stuffname: $('#stuffname').val(),
             stuffmail: $('#stuffmail').val(),
-            stuffcontacts: $('#stuffcontacts').val(),
-            stuffdesignation: $('#stuffcontacts').val()
+            stuffcontacts: $('#stuffcontacts').val()
         };
 
 
