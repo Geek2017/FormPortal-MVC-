@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <button class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModalCenter"><span class="fa fa-plus"></span>Create New User</button>
+                    <button class="btn btn-success btn-block" data-toggle="modal" data-target="#exampleModalCenter" ng-click="hideshow()"><span class="fa fa-plus"></span>Create New User</button>
                 </div>
             </div>
         </form>
@@ -36,7 +36,7 @@
             </div>
             <div class="profile-controls">
                 <a href="" class="profile-control-left btn-danger" ng-click="confirmation(stafflist.cusemail)"><span class="fa fa-times"></span></a>
-                <a href="" class="profile-control-right btn-info"><span class="fa fa-pencil"></span></a>
+                <a href="" class="profile-control-right btn-info" ng-click="editinfo(stafflist.cusemail)"><span class="fa fa-pencil"></span></a>
             </div>
         </div>
         <div class="panel-body">
@@ -115,23 +115,24 @@
                                                 <input id="stuffdesignation" type="text" class="form-control" placeholder="Staff Designation" />
                                             </div>
                                         </div><br><br>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 ">
                                             <div class="input-group">
-                                                <div class="input-group-addon">
+                                                <div class="input-group-addon pass">
                                                     <span class="fa fa-unlock-alt"></span>
                                                 </div>
-                                                <input id="stuffpassword" type="password" class="form-control" placeholder="Password" />
+                                                <input id="stuffpassword" type="password" class="form-control pass" placeholder="Password" />
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 ">
                                             <div class="input-group">
-                                                <div class="input-group-addon">
+                                                <div class="input-group-addon re-pass">
                                                     <span class="fa fa-unlock"></span>
                                                 </div>
-                                                <input id="stuffre-password" type="password" class="form-control" placeholder="Re-Password" />
+                                                <input id="stuffre-password" type="password" class="form-control re-pass" placeholder="Re-Password" />
 
                                             </div><br>
-                                            <button class="btn btn-success btn-block" ng-click="crearestaff();"><span class="fa fa-floppy-o"></span>Save</button>
+                                            <button class="btn btn-success btn-block increment" ng-click="crearestaff();"><span class="fa fa-floppy-o"></span>Save</button>
+                                            <button class="btn btn-info btn-block decrement" ng-click="updatestaff();"><span class="fa fa-floppy-o"></span>Update</button>
                                         </div>
                                     </div>
                                 </form>

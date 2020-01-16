@@ -6,6 +6,11 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
     $(".activate").removeClass("active");
     $(".activate").addClass("active");
 
+    $scope.hideshow = function() {
+        $(".increment").show();
+        $(".decrement").hide();
+    }
+
     $scope.confirmation = function(mail) {
         $('#message-box-danger').addClass('open')
         localStorage.setItem('delitem', mail);
@@ -36,6 +41,34 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
         });
     }
 
+    $scope.editinfo = function(mail) {
+
+        localStorage.setItem('editstaff', mail)
+
+        var ref = firebase.database().ref("users");
+        ref.orderByChild("cusemail").equalTo(mail).on("child_added", function(snapshot) {
+
+
+            localStorage.setItem('editstaffimg', snapshot.val().userimage)
+
+            console.log(snapshot.val());
+
+            $('#stuffname').val(snapshot.val().cusname);
+            $('#stuffmail').val(snapshot.val().cusemail);
+            $('#stuffcontacts').val(snapshot.val().mobile);
+            $('#stuffdesignation').val(snapshot.val().designation);
+            $(".toggle").modal("toggle");
+            $(".increment").hide();
+            $(".decrement").show();
+
+            $(".pass").hide();
+            $(".re-pass").hide();
+        });
+
+    }
+
+
+
 
     var fb = firebase.database().ref("users");
 
@@ -53,7 +86,7 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
         }, 300);
     });
 
-    $scope.limitit = 2;
+
 
 
 
@@ -70,6 +103,37 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
 
     }
 
+
+    $scope.updatestaff = function() {
+
+
+
+        var ref = firebase.database().ref("users");
+
+        ref.orderByChild("cusemail").equalTo(localStorage.getItem('editstaff')).on("child_added", function(snapshot) {
+
+            console.log(snapshot.key, 'this is the key');
+
+            var uid = firebase.database().ref().child('users').push().key;
+
+            var data = {
+                cusid: sessionStorage.getItem('curuserid'),
+                cusname: $('#stuffname').val(),
+                cusemail: $('#stuffmail').val(),
+                mobile: $('#stuffcontacts').val(),
+                designation: $('#stuffdesignation').val(),
+                userimage: localStorage.getItem('editstaffimg'),
+                role: '0'
+            }
+
+            var updates = {};
+            updates['/users/' + snapshot.key] = data;
+            firebase.database().ref().update(updates);
+            $(".toggle").modal("toggle");
+        });
+
+    }
+
     $scope.crearestaff = function() {
 
         console.log('checking....')
@@ -78,6 +142,7 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
             stuffmail: $('#stuffmail').val(),
             stuffcontacts: $('#stuffcontacts').val()
         };
+
 
 
 
@@ -93,6 +158,8 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
                 firebase.auth()
                     .createUserWithEmailAndPassword(data.stuffmail, passwords.password)
                     .then(function(user) {
+
+
 
                         $(".toggle").modal("toggle");
 
