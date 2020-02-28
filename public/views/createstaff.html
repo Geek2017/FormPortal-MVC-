@@ -8,7 +8,7 @@
                         <div class="input-group-addon">
                             <span class="fa fa-search"></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Who are you looking for?">
+                        <input type="text" class="form-control" placeholder="Who are you looking for?" ng-model="userSearch">
                         <div class="input-group-btn">
                             <button class="btn btn-primary">Search</button>
                         </div>
@@ -23,12 +23,12 @@
 </div>
 
 
-<div class="col-md-3" ng-repeat="stafflist in stafflists">
+<div class="col-md-3" ng-repeat="stafflist in stafflists |  filter:userSearch">
     <!-- CONTACT ITEM -->
     <div class="panel panel-default">
         <div class="panel-body profile">
             <div class="profile-image">
-                <img data-ng-src="{{stafflist.userimage}}" />
+                <img data-ng-src="" />
             </div>
             <div class="profile-data">
                 <div class="profile-data-name">{{stafflist.cusname}}</div>

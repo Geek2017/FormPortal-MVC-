@@ -79,8 +79,9 @@ angular.module('newApp').controller('createstaffdCtrl', function($timeout, $scop
                 $scope.stafflist = snapshot.val();
                 delete $scope.stafflist[localStorage.getItem('childkey')]
 
-                $scope.stafflists = $scope.stafflist
+                $scope.stafflists = JSON.stringify($scope.stafflist)
 
+                console.log(JSON.stringify($scope.stafflist))
             });
 
         }, 300);
