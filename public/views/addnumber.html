@@ -1,10 +1,14 @@
+<ul class="breadcrumb">
+    <li>{{url0}}</li>
+    <li class="active">{{url1}}</li>
+</ul>
 <div class="row">
     <div class="col-md-12">
         <form class="form-horizontal">
             <div class="panel panel-default">
                 <div class="panel panel-success">
                     <div class="panel-heading ">
-                        <h3 class="panel-title"><img src="assets/images/plj.jpg" class="img-responsive pull-left" width="50%" src="" alt="log"></h3>
+                        <h3 class="panel-title"><img id="comlogo" class="img-responsive pull-left" width="50%" src="" alt="log"></h3>
 
                     </div>
                 </div>
@@ -231,9 +235,12 @@
                             </div>
                         </div>
                         <div class="panel-footer">
-                            <button class="btn btn-default">Clear Form</button>
-                            <button class="btn btn-primary pull-right" ng-click="saveaddnumber();">Submit</button>
-
+                            <button class="btn btn-danger">Clear Form</button>
+                            <div class="btn-group pull-right ">
+                                <button class="btn btn-info">Print it</button>
+                                <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">Mail it</button>
+                                <button class="btn btn-success " id="sig-submitBtn">Save it</button>
+                            </div>
                         </div>
                     </div>
 

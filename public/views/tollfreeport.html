@@ -1,3 +1,7 @@
+<ul class="breadcrumb">
+    <li>{{url0}}</li>
+    <li class="active">{{url1}}</li>
+</ul>
 <form class="form-horizontal">
     <div class="panel panel-default">
         <div class="col-md-12 scCol ui-sortable">
@@ -12,7 +16,7 @@
             <div class="row">
                 <div class="col-md-6" style="padding-left:2%">
                     <div class="form-group">
-                        <h3 class="panel-title pull-left"><img id="logoimg" class="img-responsive" width="40%" src="assets/images/plj.jpg" alt="logo"></h3>
+                        <h3 class="panel-title pull-left"><img id="comlogo" class="img-responsive" width="40%" src="assets/images/plj.jpg" alt="logo"></h3>
                     </div>
                     <div class="form-group">
                         <p> epic.network </p>
@@ -227,5 +231,12 @@
                 </div>
             </div>
         </div>
-        <div class="panel-footer"> <button class="btn btn-default">Clear Form</button> <button class="btn btn-primary pull-right">Submit</button> </div>
+        <div class="panel-footer">
+            <button class="btn btn-danger">Clear Form</button>
+            <div class="btn-group pull-right ">
+                <button class="btn btn-info">Print it</button>
+                <button class="btn btn-primary " data-toggle="modal" data-target="#exampleModalCenter" ng-click="passwordcall(16);">Mail it</button>
+                <button class="btn btn-success " id="sig-submitBtn">Save it</button>
+            </div>
+        </div>
 </form>

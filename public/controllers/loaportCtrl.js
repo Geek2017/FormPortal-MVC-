@@ -1,7 +1,9 @@
-angular.module('newApp').controller('tollfreeCtrl', function($scope) {
+'use strict';
+
+angular.module('newApp').controller('loaportCtrl', function($scope) {
 
     $scope.url0 = 'Forms';
-    $scope.url1 = 'Toll Free Port';
+    $scope.url1 = 'Loa Port';
 
     var myVar = setInterval(myTimer, 100);
 
@@ -10,8 +12,7 @@ angular.module('newApp').controller('tollfreeCtrl', function($scope) {
         $(".panel").css("border-top-color", localStorage.getItem('unicolor'));
         $(".panel-warning").css("border-top-color", localStorage.getItem('unicolor'));
         $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
-        console.log('tollfee color theme set')
-
+        console.log('loa color theme set')
         if (sessionStorage.getItem('comlogo')) {
             console.log('imageloaded')
             $('#comlogo').attr('src', sessionStorage.getItem('comlogo'));

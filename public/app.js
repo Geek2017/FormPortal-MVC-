@@ -10,10 +10,6 @@ angular
                 templateUrl: 'views/dashboard.html',
                 controller: 'dashboardCtrl'
             })
-            .when('/sharesalesproposal/16461231321634', {
-                templateUrl: 'views/sharesalesproposal.html',
-                controller: 'sharesalesproposalCtrl'
-            })
             .when('/createstaff', {
                 templateUrl: 'views/createstaff.html',
                 controller: 'createstaffdCtrl'
@@ -31,22 +27,28 @@ angular
                 controller: 'tollfreeCtrl'
             })
             .when('/creditcardauth', {
-                templateUrl: 'views/creditcardauth.html'
+                templateUrl: 'views/creditcardauth.html',
+                controller: 'creditcardauthCtrl'
             })
             .when('/eftauthorration', {
-                templateUrl: 'views/eftauthorration.html'
+                templateUrl: 'views/eftauthorration.html',
+                controller: 'eftauthorrationCtrl'
             })
             .when('/loaport', {
-                templateUrl: 'views/loaport.html'
+                templateUrl: 'views/loaport.html',
+                controller: 'loaportCtrl'
             })
             .when('/quickInstruction', {
-                templateUrl: 'views/quickInstruction.html'
+                templateUrl: 'views/quickInstruction.html',
+                controller: 'quickInstructionCtrl'
             })
             .when('/starcode', {
-                templateUrl: 'views/starcode.html'
+                templateUrl: 'views/starcode.html',
+                controller: 'starcodeCtrl'
             })
             .when('/usersprofile', {
                 templateUrl: 'views/usersprofile.html',
                 controller: 'usersprofileCrtl'
             })
+
     });

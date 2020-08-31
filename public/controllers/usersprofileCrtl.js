@@ -1,21 +1,24 @@
 'use strict';
 
 
-angular.module('newApp').controller('usersprofileCrtl', function ($scope)
-{
+angular.module('newApp').controller('usersprofileCrtl', function($scope) {
+
+    $scope.url0 = 'User';
+    $scope.url1 = 'Profile';
+
     firebase.auth().onAuthStateChanged(function(user) {
-       
-        $("#userimg").change(function(){
-          console.log("A file has been selected.");
-          var file = document.querySelector('input[type=file]')['files'][0];
-          var reader = new FileReader();
-          var baseString;
-          reader.onloadend = function () {
-            baseString = reader.result;
-            console.log(baseString);
-            localStorage.setItem('userimg',baseString)
-          };
-          reader.readAsDataURL(file);
+
+        $("#userimg").change(function() {
+            console.log("A file has been selected.");
+            var file = document.querySelector('input[type=file]')['files'][0];
+            var reader = new FileReader();
+            var baseString;
+            reader.onloadend = function() {
+                baseString = reader.result;
+                console.log(baseString);
+                sessionStorage.setItem('userimg', baseString)
+            };
+            reader.readAsDataURL(file);
         });
 
 
@@ -23,57 +26,78 @@ angular.module('newApp').controller('usersprofileCrtl', function ($scope)
         var databaseRef = firebase.database().ref('users/');
         databaseRef.once('value', function(snapshot) {
             snapshot.forEach(function(childSnapshot) {
-           var childKey = childSnapshot.key;
-           var childData = childSnapshot.val();
-                
-         
-           if(user.providerData[0].email==childData.cusemail){
-            console.log(childSnapshot.key);
+                var childKey = childSnapshot.key;
+                var childData = childSnapshot.val();
 
-            localStorage.setItem('childkey',childSnapshot.key)
 
-            $('#usersname').val(childData.cusname);
-            $('#usersmail').val(childData.cusemail);
-            $('#userscontacts').val(childData.contact);
-            $('#usersdesignation').val(childData.designation); 
-           }
-                
+                if (user.providerData[0].email == childData.cusemail) {
+                    console.log(childSnapshot.key);
+
+                    console.log(childData);
+
+                    localStorage.setItem('childkey', childSnapshot.key)
+
+                    $('#usersname').val(childData.cusname);
+                    $('#usersmail').val(childData.cusemail);
+                    $('#mobile').val(childData.mobile);
+                    $('#usersdesignation').val(childData.designation);
+                    $('#phone').val(childData.phone)
+                }
+
             });
-          });
-  
-     
-        
+        });
 
-        $('#updateprofile').on('submit', function (e) {
+        $("#userimg").change(function() {
+            console.log("A User Image has been selected.");
+            var file = document.querySelector('input[type=file]')['files'][0];
+            var reader = new FileReader();
+            var baseString;
+            reader.onloadend = function() {
+                baseString = reader.result;
+                console.log(baseString);
+                sessionStorage.setItem('userimg', baseString)
+            };
+            // reader.readAsDataURL(file);
+        });
+
+        $('#updateprofile').on('submit', function(e) {
             e.preventDefault();
-    
+
             var uid = firebase.database().ref().child('users').push().key;
             var data = {
-             cusname: $('#usersname').val(),
-             cusemail:$('#usersmail').val(),
-             contact:$('#userscontacts').val(),
-             designation:$('#usersdesignation').val(),
-             userimages:localStorage.getItem('userimg')
+                cusid: sessionStorage.getItem('curuserid'),
+                cusname: $('#usersname').val(),
+                cusemail: $('#usersmail').val(),
+                phone: $('#phone').val(),
+                designation: $('#usersdesignation').val(),
+                mobile: $('#mobile').val(),
+                userimage: sessionStorage.getItem('userimg'),
+                used_id: localStorage.getItem('childkey'),
+                role: sessionStorage.getItem('role')
             }
-            
-            user.updateProfile({
-                displayName:$('#usersname').val(), 
-                photoURL: ""
-             })
 
-             var myDiv = document.getElementById("curusername");
-             myDiv.innerHTML = '<p>'+$('#usersname').val()+'</p>';
+            if (user) {
+                user.updateProfile({
+                    displayName: $('#usersname').val()
+                })
+            }
+
+
+            var myDiv = document.getElementById("curusername");
+            myDiv.innerHTML = '<p>' + $('#usersname').val() + '</p>';
+            $('#profile-mini').attr('src', sessionStorage.getItem('userimg'));
+            $('#profile-image').attr('src', sessionStorage.getItem('userimg'));
 
             var updates = {};
-            updates['/users/'+ localStorage.getItem('childkey') ] = data;
+            updates['/users/' + localStorage.getItem('childkey')] = data;
             firebase.database().ref().update(updates);
-            
+
             alert('The user is updated successfully!');
-            
-            
+
+
 
 
         });
-      });
+    });
 
 });
