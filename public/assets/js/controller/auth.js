@@ -1,12 +1,13 @@
-$(document).ready(function () {
-  // alert('checking')
- 
+$(document).ready(function() {
+    // alert('checking')
+
     firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        console.log(user)
-        
-      } else {
-       console.log(user)
-      }
+        if (user) {
+            console.log('User Login!')
+        } else {
+            console.log('User Logout!');
+            localStorage.clear();
+            sessionStorage.clear();
+        }
     });
-  });
+});
