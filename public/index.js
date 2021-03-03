@@ -1,10 +1,7 @@
 'use strict';
 
 
-angular.module('newApp').controller('indexdCtrl', function($scope) {
-
-    $scope.url0 = 'Home';
-    $scope.url1 = 'Dashboard';
+angular.module('newApp').controller('indexdCtrl', function($scope, $rootScope) {
 
     var config = {
         apiKey: "AIzaSyArkU60LENXmQPHRvWoK26YagzprezV3dg",
@@ -26,101 +23,102 @@ angular.module('newApp').controller('indexdCtrl', function($scope) {
 
     $(".activate").addClass("active");
 
+    document.getElementById("spinner").style.visibility = "hidden";
+    document.getElementById("formportal").style.visibility = "visible";
+
+    // var myVar = setInterval(myTimer, 100);
+
+    // function myTimer() {
+
+    //     var ref = firebase.database().ref("users");
+    //     ref.orderByChild("cusemail").equalTo(localStorage.getItem('curusermail')).on("child_added", function(snapshot) {
+    //         console.log('Processing....');
+    //         if (snapshot.val()) {
+
+    //             runtime();
+
+    //             console.log('Processing User Complete!');
+
+    //             sessionStorage.setItem('curuserid', snapshot.val().cusid);
+
+    //             localStorage.setItem('childkey', snapshot.key)
+
+    //             var datacontent = snapshot.val().role
+
+    //             datacontent == "0" ? $('#gearup').hide() : $('#gearup').show();
+
+    //             sessionStorage.setItem('cusname', snapshot.val().cusname);
+
+    //             sessionStorage.setItem('role', snapshot.val().role);
+
+    //             sessionStorage.setItem('designation', snapshot.val().designation);
+
+    //             sessionStorage.setItem('userimg', snapshot.val().userimage);
+    //         } else {
+    //             console.log('Processing User Failed');
+    //         }
+
+    //     });
+    //     if (sessionStorage.getItem('userimg')) {
+    //         console.log('imageloaded')
+    //         $scope.userimg = sessionStorage.getItem('userimg');
+    //         $('#profile-mini').attr('src', sessionStorage.getItem('userimg'));
+    //         $('#profile-image').attr('src', sessionStorage.getItem('userimg'));
+
+    //         $("#job").text(sessionStorage.getItem('designation'));
+
+    //         $("#curusername").text(sessionStorage.getItem('cusname'));
+
+    //     } else {
+    //         console.log('imagenotloaded')
+    //         $('#profile-mini').attr('src', 'assets/images/users/avatar.jpg')
+    //         $('#profile-image').attr('src', 'assets/images/users/avatar.jpg')
+    //     }
+    // }
+
+    // function myStopFunction() {
+
+    //     unicolorandtheme();
+    //     clearInterval(myVar);
+    //     setTimeout(function() {
+    //         document.getElementById("formportal").style.visibility = "visible";
+    //         document.getElementById("spinner").style.visibility = "hidden";
+    //         $("#span").text(sessionStorage.getItem('curcomname'));
 
 
-    var myVar = setInterval(myTimer, 100);
+    //     }, 2000);
+    // }
 
-    function myTimer() {
+    // function runtime() {
 
-        var ref = firebase.database().ref("users");
-        ref.orderByChild("cusemail").equalTo(localStorage.getItem('curusermail')).on("child_added", function(snapshot) {
-            console.log('Processing....');
-            if (snapshot.val()) {
+    //     var ref = firebase.database().ref("com_profiles");
+    //     ref.orderByChild("cusid").equalTo(sessionStorage.getItem('curuserid')).on("child_added", function(snapshot) {
+    //         console.log('Logo is Set');
+    //         sessionStorage.setItem('curcomname', snapshot.val().comname);
+    //         sessionStorage.setItem('comlogo', snapshot.val().comlogo);
+    //     });
 
-                runtime();
-
-                console.log('Processing User Complete!');
-
-                sessionStorage.setItem('curuserid', snapshot.val().cusid);
-
-                localStorage.setItem('childkey', snapshot.key)
-
-                var datacontent = snapshot.val().role
-
-                datacontent == "0" ? $('#gearup').hide() : $('#gearup').show();
-
-                sessionStorage.setItem('cusname', snapshot.val().cusname);
-
-                sessionStorage.setItem('role', snapshot.val().role);
-
-                sessionStorage.setItem('designation', snapshot.val().designation);
-
-                sessionStorage.setItem('userimg', snapshot.val().userimage);
-            } else {
-                console.log('Processing User Failed');
-            }
-
-        });
-        if (sessionStorage.getItem('userimg')) {
-            console.log('imageloaded')
-            $scope.userimg = sessionStorage.getItem('userimg');
-            $('#profile-mini').attr('src', sessionStorage.getItem('userimg'));
-            $('#profile-image').attr('src', sessionStorage.getItem('userimg'));
-
-            $("#job").text(sessionStorage.getItem('designation'));
-
-            $("#curusername").text(sessionStorage.getItem('cusname'));
-
-        } else {
-            console.log('imagenotloaded')
-            $('#profile-mini').attr('src', 'assets/images/users/avatar.jpg')
-            $('#profile-image').attr('src', 'assets/images/users/avatar.jpg')
-        }
-    }
-
-    function myStopFunction() {
-
-        unicolorandtheme();
-        clearInterval(myVar);
-        setTimeout(function() {
-            document.getElementById("formportal").style.visibility = "visible";
-            document.getElementById("spinner").style.visibility = "hidden";
-            $("#span").text(sessionStorage.getItem('curcomname'));
-
-
-        }, 2000);
-    }
-
-    function runtime() {
-
-        var ref = firebase.database().ref("com_profiles");
-        ref.orderByChild("cusid").equalTo(sessionStorage.getItem('curuserid')).on("child_added", function(snapshot) {
-            console.log('Logo is Set');
-            sessionStorage.setItem('curcomname', snapshot.val().comname);
-            sessionStorage.setItem('comlogo', snapshot.val().comlogo);
-        });
-
-        var ref = firebase.database().ref("theme_info");
-        ref.orderByChild("cusid").equalTo(sessionStorage.getItem('curuserid')).on("child_added", function(snapshot) {
-            console.log('Unicolor & Theme is Set');
-            localStorage.setItem('unicolor', snapshot.val().formcolor);
-            localStorage.setItem('theme', snapshot.val().theme);
-            myStopFunction();
-        });
+    //     var ref = firebase.database().ref("theme_info");
+    //     ref.orderByChild("cusid").equalTo(sessionStorage.getItem('curuserid')).on("child_added", function(snapshot) {
+    //         console.log('Unicolor & Theme is Set');
+    //         localStorage.setItem('unicolor', snapshot.val().formcolor);
+    //         localStorage.setItem('theme', snapshot.val().theme);
+    //         myStopFunction();
+    //     });
 
 
 
-    }
+    // }
 
 
-    function unicolorandtheme() {
-        $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));
-        $(".panel").css("border-top-color", localStorage.getItem('unicolor'));
-        $(".panel-warning").css("border-top-color", localStorage.getItem('unicolor'));
-        $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
-        console.log('red')
-        $("#theme").prop("href", localStorage.getItem('theme'));
-    }
+    // function unicolorandtheme() {
+    //     $(".widget.widget-info").css("background", localStorage.getItem('unicolor'));
+    //     $(".panel").css("border-top-color", localStorage.getItem('unicolor'));
+    //     $(".panel-warning").css("border-top-color", localStorage.getItem('unicolor'));
+    //     $(".x-navigation>li.xn-logo>a:first-child").css("background", localStorage.getItem('unicolor'));
+    //     console.log('red')
+    //     $("#theme").prop("href", localStorage.getItem('theme'));
+    // }
 
 
 
