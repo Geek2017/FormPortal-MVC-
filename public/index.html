@@ -20,6 +20,10 @@
     <script src="./assets/libraries/AngularJS/angular.js"></script>
     <script src="./assets/libraries/AngularJS/angular-route.js"></script>
 
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+    <script src="./app.js"></script>
+    <script src="./index.js"></script>
+
 </head>
 
 <body ng-app="newApp" ng-controller="indexdCtrl">
@@ -32,7 +36,7 @@
                 <!-- START X-NAVIGATION -->
                 <ul class="x-navigation">
                     <li class="xn-logo">
-                        <a href="index.html">
+                        <a href="./">
 
                             <h3 id="span">
                             </h3>
@@ -85,7 +89,6 @@
                 <!-- END X-NAVIGATION -->
             </div>
             <!-- END PAGE SIDEBAR -->
-
             <!-- PAGE CONTENT -->
             <div class="page-content" style="height:0px!important">
 
@@ -105,7 +108,7 @@
                     <!-- END SEARCH -->
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
-                        <a href="/public" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>
+                        <!-- <a href="" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a> -->
                     </li>
                     <!-- END SIGN OUT -->
                     <!-- MESSAGES -->
@@ -262,7 +265,6 @@
     <!-- END PLUGINS -->
 
 
-    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
 
     <!-- START THIS PAGE PLUGINS-->
     <script type='text/javascript' src='./assets/js/plugins/icheck/icheck.min.js'></script>
@@ -294,8 +296,7 @@
     <!-- <script type="text/javascript" src="./assets/js/signscript.js"></script> -->
 
 
-    <script src="./app.js"></script>
-    <script src="./index.js"></script>
+
     <script src="./controllers/dashboardCtrl.js"></script>
     <script src="./controllers/addnumberCtrl.js"></script>
     <script src="./controllers/salesproposalCtrl.js"></script>

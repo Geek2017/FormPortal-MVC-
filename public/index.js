@@ -12,19 +12,61 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $rootScope) {
 
     firebase.initializeApp(config);
 
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            localStorage.setItem('curusermail', user.email)
+    // firebase.auth().onAuthStateChanged(function(user) {
+    //     doSomething();
 
-        } else {
-            window.location.replace("login.html");
-        }
-    });
+    //     function doSomething() {
+    //         if (user) {
+    //             return user.email
+    //         } else {
+    //             window.location.replace("login.html");
+    //         }
+    //     }
+    //     var response = doSomething();
+    //     console.log(response)
+
+
+
+    //     var ref = firebase.database().ref("users");
+    //     ref.orderByChild("cusemail").equalTo(response).on("child_added", function(snapshot) {
+    //         console.log(snapshot.val().cusid);
+
+    //         localStorage.setItem('curuserid', snapshot.val().cusid);
+
+    //         $('#profile-image').attr('src', snapshot.val().userimage);
+
+    //         $('#job').text(snapshot.val().designation);
+
+    //         var ref = firebase.database().ref("theme_info");
+    //         ref.orderByChild("cusid").equalTo(snapshot.val().cusid).on("child_added", function(snapshot) {
+    //             console.log(snapshot.val());
+    //             $("#theme").attr("href", snapshot.val().theme);
+    //             localStorage.setItem('tuid', snapshot.val().user_id)
+    //         });
+
+    //         var ref = firebase.database().ref("com_profiles");
+    //         ref.orderByChild("cusid").equalTo(snapshot.val().cusid).on("child_added", function(snapshot) {
+    //             console.log(snapshot.val().comname);
+    //             $('#span').text(snapshot.val().comname);
+    //         });
+
+
+
+    //     });
+
+
+
+    // });
 
     $(".activate").addClass("active");
 
-    document.getElementById("spinner").style.visibility = "hidden";
-    document.getElementById("formportal").style.visibility = "visible";
+    setTimeout(function() {
+
+        document.getElementById("spinner").style.visibility = "hidden";
+
+        document.getElementById("formportal").style.visibility = "visible";
+
+    }, 5000)
 
     // var myVar = setInterval(myTimer, 100);
 

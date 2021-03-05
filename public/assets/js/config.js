@@ -62,7 +62,7 @@ $(document).ready(function() {
     set_settings(theme_settings, false);
 
     $(".theme-settings input").on("ifClicked", function() {
-
+        alert('123');
         var input = $(this);
 
         if (input.attr("name") != 'st_layout_boxed') {
@@ -119,6 +119,38 @@ $(document).ready(function() {
         $(".ts-themes a").removeClass("active");
         $(this).addClass("active");
         $("#theme").attr("href", $(this).data("theme"));
+
+
+
+        var userid = localStorage.getItem('curuserid');
+        var tuid = localStorage.getItem("tuid");
+
+        var data = {
+            cusid: userid,
+            formcolor: "purle",
+            theme: $(this).data("theme"),
+            user_id: tuid
+        }
+
+        if (tuid) {
+            var uid = tuid;
+            var updates = {};
+            updates['/theme_info/' + uid] = data;
+            firebase.database().ref().update(updates);
+
+            console.log($(this).data("theme"))
+        } else {
+            var uid = firebase.database().ref().child('theme_info').push().key;
+            var updates = {};
+            updates['/theme_info/' + uid] = data;
+            firebase.database().ref().update(updates);
+
+            console.log($(this).data("theme"))
+        }
+
+
+
+
         return false;
     });
     /* END Change Theme */
