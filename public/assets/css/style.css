@@ -1,3 +1,10 @@
+.widget .widget-item-left .fa,
+.widget .widget-item-right .fa,
+.widget .widget-item-left .glyphicon,
+.widget .widget-item-right .glyphicon {
+    font-size: 35px!important;
+}
+
 #formportal {
     visibility: hidden;
 }
