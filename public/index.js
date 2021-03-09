@@ -12,51 +12,64 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $rootScope) {
 
     firebase.initializeApp(config);
 
-    // firebase.auth().onAuthStateChanged(function(user) {
-    //     doSomething();
-
-    //     function doSomething() {
-    //         if (user) {
-    //             return user.email
-    //         } else {
-    //             window.location.replace("login.html");
-    //         }
-    //     }
-    //     var response = doSomething();
-    //     console.log(response)
 
 
+    firebase.auth().onAuthStateChanged(function(user) {
+        doSomething();
 
-    //     var ref = firebase.database().ref("users");
-    //     ref.orderByChild("cusemail").equalTo(response).on("child_added", function(snapshot) {
-    //         console.log(snapshot.val().cusid);
-
-    //         localStorage.setItem('curuserid', snapshot.val().cusid);
-
-    //         $('#profile-image').attr('src', snapshot.val().userimage);
-
-    //         $('#job').text(snapshot.val().designation);
-
-    //         var ref = firebase.database().ref("theme_info");
-    //         ref.orderByChild("cusid").equalTo(snapshot.val().cusid).on("child_added", function(snapshot) {
-    //             console.log(snapshot.val());
-    //             $("#theme").attr("href", snapshot.val().theme);
-    //             localStorage.setItem('tuid', snapshot.val().user_id)
-    //         });
-
-    //         var ref = firebase.database().ref("com_profiles");
-    //         ref.orderByChild("cusid").equalTo(snapshot.val().cusid).on("child_added", function(snapshot) {
-    //             console.log(snapshot.val().comname);
-    //             $('#span').text(snapshot.val().comname);
-    //         });
+        function doSomething() {
+            if (user) {
+                return user.email
+            } else {
+                window.location.replace("login.html");
+            }
+        }
+        var response = doSomething();
 
 
 
-    //     });
+        console.log(response)
+        localStorage.setItem('curuseremail', response);
+
+        $(".mini-login-header").hide();
+
+        document.cookie = "auth=true";
+        var cokie = document.cookie = "auth=true";
+        console.log(cokie);
+
+        var ref = firebase.database().ref("users");
+        ref.orderByChild("cusemail").equalTo(response).on("child_added", function(snapshot) {
+
+            console.log(snapshot.val().cusid);
+
+            localStorage.setItem('curuserid', snapshot.val().cusid);
+
+            $('#profile-image').attr('src', snapshot.val().userimage);
+
+            $('#job').text(snapshot.val().designation);
+
+            var ref = firebase.database().ref("theme_info");
+            ref.orderByChild("cusid").equalTo(snapshot.val().cusid).on("child_added", function(snapshot) {
+                console.log(snapshot.val());
+                $("#theme").attr("href", snapshot.val().theme);
+                localStorage.setItem('tuid', snapshot.val().user_id)
+            });
+
+            var ref = firebase.database().ref("com_profiles");
+            ref.orderByChild("cusid").equalTo(snapshot.val().cusid).on("child_added", function(snapshot) {
+                console.log(snapshot.val().comname);
+                console.log(snapshot.val().comlogo);
+                sessionStorage.setItem('comlogo', snapshot.val().comlogo)
+                $('#span').text(snapshot.val().comname);
+            });
 
 
 
-    // });
+        });
+
+
+
+    });
 
     $(".activate").addClass("active");
 

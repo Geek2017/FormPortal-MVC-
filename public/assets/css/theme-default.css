@@ -2510,14 +2510,14 @@ ul.panel-controls>li>.dropdown-menu:before {
 .btn-info:active,
 .btn-info.active,
 .open>.dropdown-toggle.btn-info {
-    background-color: #29b2e1;
-    border-color: #29b2e1;
+    background-color: rgb(151 115 226);
+    border-color: rgb(151 115 226);
 }
 
 .btn-info[disabled],
 .btn-info.disabled {
-    background: #6ccaea;
-    border-color: #63c7e9;
+    background: rgb(151 115 226);
+    border-color: rgb(151 115 226);
 }
 
 .btn-link {
@@ -2589,8 +2589,8 @@ ul.panel-controls>li>.dropdown-menu:before {
 .btn.btn-rounded.btn-info:focus,
 .btn.btn-rounded.btn-info:active,
 .btn.btn-rounded.btn-info.active {
-    border-color: #29b2e1;
-    color: #29b2e1;
+    border-color: rgb(151 115 226);
+    color: rgb(151 115 226);
 }
 
 .btn.btn-rounded.btn-danger {
@@ -7823,7 +7823,7 @@ div.tagsinput div {
 .fc-event-skin.blue,
 .fc-event.blue {
     background-color: #9773e2;
-    border-color: #29b2e1;
+    border-color: rgb(151 115 226);
 }
 
 

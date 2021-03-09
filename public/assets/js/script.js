@@ -1,6 +1,9 @@
 $(document).ready(function() {
     //initialize the firebase app
 
+
+
+
     var str = window.location.pathname;
     var res = str.slice(0, 5);
 
@@ -196,18 +199,6 @@ $(document).ready(function() {
                                 // var layout =$('#comcontact').val();
                                 // var options =$('#comaddress').val();
 
-                                var data = {
-                                    user_id: uid,
-                                    cusid: cusid,
-                                    theme: theme,
-                                    formcolor: formcolor
-                                        //  layout:layout,
-                                        //  options:options
-                                }
-
-                                var updates = {};
-                                updates['/theme_info/' + uid] = data;
-                                firebase.database().ref().update(updates);
 
                                 refresh();
                             }
