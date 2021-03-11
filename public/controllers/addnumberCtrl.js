@@ -1,26 +1,23 @@
 angular.module('newApp').controller('addnumberdCtrl', function($scope) {
 
-    $scope.url0 = 'Forms';
-    $scope.url1 = 'Port Local Number';
 
 
 
-    var myVar = setInterval(myTimer, 100);
+    $("#comname").text(localStorage.getItem('comname'))
+    $("#comadd").text(localStorage.getItem('comaddress'))
+    $("#comno").text(localStorage.getItem('comcontact'))
 
-    function myTimer() {
 
-        if (sessionStorage.getItem('comlogo')) {
-            console.log('imageloaded')
-            $('#comlogo').attr('src', sessionStorage.getItem('comlogo'));
-        } else {
-            console.log('imagenotloaded')
-            $('#comlogo').attr('src', 'assets/images/plj.jpg')
-        }
+    if (sessionStorage.getItem('comlogo')) {
+        console.log('imageloaded')
+        $('#comlogo').attr('src', sessionStorage.getItem('comlogo'));
+    } else {
+        console.log('imagenotloaded')
+        $('#comlogo').attr('src', 'assets/images/plj.jpg')
     }
 
-    setTimeout(function() {
-        clearInterval(myVar);
-    }, 2000);
+
+
 
 
     $('#logoimg').hide()

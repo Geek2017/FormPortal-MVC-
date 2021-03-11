@@ -58,9 +58,18 @@ angular.module('newApp').controller('indexdCtrl', function($scope, $rootScope) {
             var ref = firebase.database().ref("com_profiles");
             ref.orderByChild("cusid").equalTo(snapshot.val().cusid).on("child_added", function(snapshot) {
                 console.log(snapshot.val().comname);
+
+
+
                 console.log(snapshot.val().comlogo);
                 sessionStorage.setItem('comlogo', snapshot.val().comlogo)
                 $('#span').text(snapshot.val().comname);
+
+                localStorage.setItem('comaddress', snapshot.val().comaddress)
+                localStorage.setItem('comcontact', snapshot.val().comcontact)
+                localStorage.setItem('comname', snapshot.val().comname)
+
+                console.log(snapshot.val())
             });
 
 
